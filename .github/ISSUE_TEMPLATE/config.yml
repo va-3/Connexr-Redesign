@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question
+    url: https://github.com/va-3/Connexr-Redesign/discussions
+    about: Use Discussions for general questions, ideas, or open-ended brainstorming.
+  - name: Security disclosure
+    url: mailto:security@rsatechgroup.com
+    about: Report a security vulnerability privately. Do not open a public issue.
