@@ -6,6 +6,26 @@ Format inspired by [ADRs](https://adr.github.io/) but lighter. Keep each entry s
 
 ---
 
+## [0004] 2026-04-28 — Two-stage Claude Design plan: wireframes → high-fidelity (supersedes ADR 0002)
+
+**Status:** Accepted (supersedes ADR 0002)
+
+**Context:** ADR 0002 committed to a single direction without exploration to save Claude Design quota. After completing the design system and one realized landing page, two issues surfaced: (a) the realized page contained fabricated content (fake product UI, fake metrics, fictional testimonials, fictional client names) that was caught and removed, and (b) we never actually compared layout / information-architecture directions — we accepted the first generation. The team also confirmed the architecture split: ALL frontend lives in Claude Design; only backend lives in Claude Code.
+
+**Decision:** Run a proper two-stage Claude Design flow before production handoff:
+1. **Wireframe round** — two layout / IA variants in one canvas (Variant A — Classical / symmetric / sparse; Variant B — Editorial / asymmetric / dense). Both use the locked design-system tokens. Compare composition, hierarchy, and section flow only.
+2. **High-fidelity round** — winner is expanded across all 13 sections, all 3 breakpoints (desktop / tablet / mobile), with full interaction states and zero fabricated content.
+
+Both rounds use the prompts in `/docs/CLAUDE-DESIGN-PROMPTS.md`, which encode lessons learned from the design-system phase: zero-fabrication rules per content type, type-led hero discipline (no fake product UI), placeholder labeling rule (italic + "pending" suffix), no dead code in JSX exports, Title Case H1, real responsive output.
+
+**Consequences:**
+- ADR 0002 is superseded. Single-direction commitment was a quota-driven compromise; with the design system done, the variant exploration is now affordable.
+- Layout-vs-aesthetic separation is enforced: wireframe round tests layout only; aesthetic is locked by the design system already.
+- Content fabrication is banned at the prompt level for every fabrication type seen in v1.
+- Claude Design = frontend; Claude Code = backend. No manual JSX → React port unless explicitly chosen.
+
+---
+
 ## [0003] 2026-04-28 — Lock IBM Plex Sans as body font (replace Inter)
 
 **Status:** Accepted

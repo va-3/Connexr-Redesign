@@ -18,6 +18,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Fixed
 - Nav CTA button wrapping at narrow viewports (`design-system/ui_kits/marketing-site/styles.css`): added `flex-shrink: 0` alongside existing `white-space: nowrap`.
 - Hero H1 case corrected from sentence case to Title Case to match the registered brand slogan ("AI at the Core. Scale at Speed.") in `design-system/ui_kits/marketing-site/components.jsx`.
+- Removed fabricated content from the design-system marketing-site UI kit: fake LeoRix product UI, fake stats, fictional Mara Chen testimonial, fictional client names in trust strip, invented article titles in Resources. Now uses explicitly labeled placeholders.
+
+### Changed
+- ADR 0002 superseded by ADR 0004: instead of a single committed direction, we now run a two-stage Claude Design flow (wireframe → high-fidelity) with proper layout exploration before production handoff. See `docs/DECISIONS.md`.
+
+### Added
+- `docs/CLAUDE-DESIGN-PROMPTS.md`: paste-ready Wireframe and High-Fidelity prompts encoding zero-fabrication rules, type-led hero discipline, placeholder labeling, no-dead-code export, Title Case H1, and 3-breakpoint responsive requirements.
 
 ---
 
