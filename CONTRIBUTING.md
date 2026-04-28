@@ -92,7 +92,7 @@ BREAKING CHANGE: /api/lead now expects { email, company } instead of
 
 ### What requires a more rigorous review
 
-- Changes to `design-system/colors_and_type.css` (LOCKED tokens — needs design lead sign-off)
+- Changes to `design-system/colors_and_type.css` (LOCKED tokens — needs project owner sign-off)
 - Changes to brand assets in `design-system/assets/`
 - Anything touching authentication, SSR/RSC boundaries, or external API contracts
 - Performance-critical paths (LCP, CLS contributors, hydration cost)
@@ -144,7 +144,7 @@ A change is "done" when:
 
 The design system tokens in `design-system/colors_and_type.css` are LOCKED. They reflect the live Connexr brand and were extracted from the production site's CSS variables.
 
-**Do not change without** (a) a design-change issue, (b) approval from the project lead, and (c) a corresponding update to `docs/DESIGN-BRIEF.md` and `design-system/README.md`.
+**Do not change without** (a) a design-change issue, (b) approval from the project owner, and (c) a corresponding update to `docs/DESIGN-BRIEF.md` and `design-system/README.md`.
 
 Anti-defaults (banned in any artifact):
 
@@ -165,4 +165,4 @@ The full list lives in [`design-system/README.md`](./design-system/README.md#ant
 
 ## Questions
 
-Open an issue with the `question` label, or reach out to the project lead directly.
+Open an issue with the `question` label, or reach out to the project owner directly.

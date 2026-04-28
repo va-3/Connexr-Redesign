@@ -6,7 +6,7 @@ labels: design, design-system
 assignees: ''
 ---
 
-> **Heads up:** the tokens in `design-system/colors_and_type.css` are LOCKED. Changes here require approval from the project lead and a corresponding update to `docs/DESIGN-BRIEF.md` and `design-system/README.md`.
+> **Heads up:** the tokens in `design-system/colors_and_type.css` are LOCKED. Changes here require approval from the project owner (RSA Tech leadership or designated brand owner) and a corresponding update to `docs/DESIGN-BRIEF.md` and `design-system/README.md`.
 
 ## Proposed change
 
@@ -39,7 +39,7 @@ assignees: ''
 
 ## Approval needed
 
-- [ ] Project lead
+- [ ] Project owner / brand owner
 - [ ] RSA Tech leadership (only if brand-facing or trademark-adjacent)
 - [ ] Legal (only if logo / mark changes)
 

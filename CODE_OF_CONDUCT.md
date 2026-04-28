@@ -34,7 +34,7 @@ This Code of Conduct applies within all project spaces — issues, pull requests
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the project lead at the email address listed in the repository's README.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported privately via a confidential GitHub issue, or directly to the repository maintainer listed in the README.
 
 All complaints will be reviewed and investigated promptly and fairly. Project maintainers are obligated to respect the privacy and security of the reporter of any incident.
 

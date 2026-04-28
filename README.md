@@ -106,9 +106,11 @@ The full process is in [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 ## Maintainers
 
-- **Project lead:** Vishnu Anapalli ([@va-3](https://github.com/va-3))
+This repository is currently maintained by:
 
-For commercial / partnership questions: contact RSA Tech Group leadership.
+- **Vishnu Anapalli** ([@va-3](https://github.com/va-3)) — frontend / fullstack engineering intern, RSA Tech Group
+
+Additional team members will be added as the project staffs up. Until then, @va-3 is the primary point of contact for code-level questions; RSA Tech Group leadership owns brand and product direction. For commercial / partnership inquiries, contact RSA Tech Group directly.
 
 ---
 
