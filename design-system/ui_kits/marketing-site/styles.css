@@ -178,3 +178,66 @@
 .ms-case .quote { font-family: var(--font-serif); font-weight: 400; font-size: 28px; line-height: 1.35; color: var(--navy-900); margin: 0 0 24px; text-wrap: pretty; }
 .ms-case .who { font-size: 14px; color: var(--slate-600); }
 .ms-case .who strong { color: var(--navy-900); display: block; font-weight: 600; }
+
+/* --- Sanitization pass: lede hero, placeholder logos, NDA case, LeoRix aside, placeholder articles --- */
+
+/* Type-led hero (single column) */
+.ms-hero--lede { padding: 128px 0 96px; }
+.ms-hero-lede { max-width: 880px; }
+.ms-hero-lede h1 { font-size: 88px; line-height: 1.02; letter-spacing: -0.028em; margin: 16px 0 24px; color: var(--navy-900); }
+@media (max-width: 960px) { .ms-hero-lede h1 { font-size: 56px; } }
+@media (max-width: 720px) { .ms-hero-lede h1 { font-size: 44px; } }
+.ms-hero-lede .ms-lead { max-width: 640px; }
+
+/* Placeholder client-logo cells */
+.ms-trust-cell--placeholder {
+  border: 1px dashed var(--slate-200);
+  border-radius: 4px;
+  padding: 20px 12px;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--slate-500);
+  background: transparent;
+  text-align: center;
+}
+
+/* LeoRix aside (replaces fake stat grid) */
+.ms-leorix-aside { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
+.ms-leorix-link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,.85);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  padding-bottom: 2px;
+  cursor: pointer;
+  transition: color var(--duration-base);
+}
+.ms-leorix-link:hover { color: var(--orange-500); border-color: var(--orange-500); }
+
+/* Proof: certs at top, NDA case row */
+.ms-proof-bar--top { margin-top: 32px; border-top: none; padding-top: 0; }
+.ms-case--nda {
+  display: block;
+  border-top: 1px solid var(--border);
+  margin-top: 64px;
+  padding: 48px 0 0;
+  grid-template-columns: none;
+}
+.ms-case--nda .ms-card-link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--slate-600);
+  letter-spacing: 0.02em;
+}
+
+/* Placeholder resource cards */
+.ms-resource--placeholder { cursor: default; }
+.ms-resource--placeholder:hover { border-color: var(--border); box-shadow: none; }
+.ms-resource--placeholder .body h4 { color: var(--slate-500); font-style: italic; font-weight: 500; }
+.ms-resource--placeholder .img { opacity: 0.6; }
+

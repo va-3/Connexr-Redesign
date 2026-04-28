@@ -62,9 +62,9 @@ const Nav = ({ onCta }) => (
 // Hero — operator-credible, asymmetric grid (7/5)
 // -------------------------------------------------------------
 const Hero = () => (
-  <section className="ms-section ms-hero">
-    <div className="ms-container ms-hero-grid">
-      <div>
+  <section className="ms-section ms-hero ms-hero--lede">
+    <div className="ms-container">
+      <div className="ms-hero-lede">
         <span className="ms-eyebrow">AIOps · Managed Services</span>
         <h1>AI at the Core.<br/>Scale at Speed.</h1>
         <p className="ms-lead">We run AI-native operations for enterprise IT — eliminating alert fatigue, automating incident response, and giving your team back the hours.</p>
@@ -79,26 +79,8 @@ const Hero = () => (
           <span className="ms-cert">GDPR</span>
         </div>
       </div>
-      <HeroPanel />
     </div>
   </section>
-);
-
-const HeroPanel = () => (
-  <aside className="ms-hero-panel">
-    <div className="ms-hero-panel-head">
-      <div><span className="ms-hero-panel-dot"></span><span className="ms-hero-panel-title">leorix · live triage</span></div>
-      <span className="ms-hero-panel-title">us-east-1</span>
-    </div>
-    <div className="ms-ticker">
-      <div><span className="t-time">04:12:07</span> <span className="t-p1">P1</span> payments-api · <span className="t-warn">47 alerts</span> → <span className="t-ok">1 root cause</span></div>
-      <div><span className="t-time">04:12:08</span> <span className="t-p1">P2</span> ingest-pipeline · <span className="t-warn">12 alerts</span> → correlated</div>
-      <div><span className="t-time">04:12:09</span> <span className="t-mute">··</span> kafka-broker-3 · rebalance ok · lag <span className="t-ok">0ms</span></div>
-      <div><span className="t-time">04:12:11</span> <span className="t-mute">··</span> runbook attached · <span className="t-ok">auto-resolved</span></div>
-      <div><span className="t-time">04:12:14</span> <span className="t-mute">··</span> on-call notified · pageduty silenced</div>
-      <div style={{marginTop:12,paddingTop:12,borderTop:"1px solid rgba(255,255,255,.1)"}}><span className="t-mute">MTTR</span> <span className="t-ok">↓ 64%</span> &nbsp;·&nbsp; <span className="t-mute">noise</span> <span className="t-ok">↓ 92%</span></div>
-    </div>
-  </aside>
 );
 
 // -------------------------------------------------------------
@@ -108,8 +90,8 @@ const TrustStrip = () => (
   <div className="ms-trust-strip">
     <div className="ms-container">
       <div className="ms-trust-row">
-        {["Northwind Health","Gradient Capital","Orbital Bank","Helix Manufacturing","Continuum Insurance","Ridgeline Retail"].map(n => (
-          <div key={n} className="ms-trust-cell">{n}</div>
+        {[0,1,2,3,4,5].map(i => (
+          <div key={i} className="ms-trust-cell ms-trust-cell--placeholder">Client logo</div>
         ))}
       </div>
     </div>
@@ -240,13 +222,9 @@ const LeoRixSection = () => (
             <Button variant="ghost" onClick={(e)=>e.preventDefault()}><span style={{color:"#fff"}}>Read the spec</span></Button>
           </div>
         </div>
-        <div>
-          <div className="ms-grid-2" style={{gap:16}}>
-            <div className="ms-stat"><span className="num">2.8<span className="unit">M</span></span><span className="lbl">Alerts triaged</span><span className="cap">2025 · across 42 engagements</span></div>
-            <div className="ms-stat"><span className="num">64<span className="unit">%</span></span><span className="lbl">MTTR reduction</span><span className="cap">P1–P3, healthcare client</span></div>
-            <div className="ms-stat"><span className="num">11<span className="unit">k</span></span><span className="lbl">Engineer-hours back</span><span className="cap">Annualized, mid-market avg</span></div>
-            <div className="ms-stat"><span className="num">92<span className="unit">%</span></span><span className="lbl">Alert noise reduction</span><span className="cap">Median across deployments</span></div>
-          </div>
+        <div className="ms-leorix-aside">
+          <p className="ms-lead" style={{color:"rgba(255,255,255,.78)",maxWidth:420}}>Operator-grade reasoning for AIOps incident response — correlation, runbook attachment, and safe remediation, with clean handoff to humans on escalation.</p>
+          <a className="ms-leorix-link">Read the spec →</a>
         </div>
       </div>
     </div>
@@ -295,32 +273,18 @@ const ProofSection = () => (
     <div className="ms-container">
       <SectionHeader
         eyebrow="Proof"
-        title="Numbers we can defend in a board review."
-        lead="Real proxies, not vanity metrics. Each datapoint is tied to a specific engagement and survives audit."
+        title="Audited, accredited, accountable."
+        lead="Operations run against the four compliance regimes that enterprise IT actually has to clear. Engagement details available under NDA."
       />
-      <div className="ms-grid-4">
-        <div className="ms-stat"><span className="num">42</span><span className="lbl">Enterprise engagements</span><span className="cap">2025, active</span></div>
-        <div className="ms-stat"><span className="num">2.8<span className="unit">M</span></span><span className="lbl">Alerts triaged</span><span className="cap">Across all clients</span></div>
-        <div className="ms-stat"><span className="num">64<span className="unit">%</span></span><span className="lbl">Median MTTR cut</span><span className="cap">P1–P3, healthcare</span></div>
-        <div className="ms-stat"><span className="num">11<span className="unit">k</span></span><span className="lbl">Engineer-hours back</span><span className="cap">Annualized, mid-market</span></div>
-      </div>
-
-      <div className="ms-case">
-        <div>
-          <span className="ms-eyebrow">Case study · Healthcare</span>
-          <p className="quote">"Connexr ran our P1 incident response for 14 months. Alert volume dropped from 380k/month to 31k. We didn't replace the platform team — we gave them their nights back."</p>
-          <div className="who"><strong>Mara Chen</strong>VP Platform, Northwind Health</div>
-        </div>
-        <div>
-          <Button variant="ghost" icon="arrow">Read the full case study</Button>
-        </div>
-      </div>
-
-      <div className="ms-proof-bar">
+      <div className="ms-proof-bar ms-proof-bar--top">
         <span className="ms-cert">SOC 2 Type II</span>
         <span className="ms-cert">HIPAA</span>
         <span className="ms-cert">ISO/IEC 27001:2022</span>
         <span className="ms-cert">GDPR</span>
+      </div>
+
+      <div className="ms-case ms-case--nda">
+        <a className="ms-card-link">Case study available under NDA — request access →</a>
       </div>
     </div>
   </section>
@@ -343,7 +307,7 @@ const MethodologySection = () => {
         <SectionHeader
           eyebrow="Methodology"
           title="Five steps. Same on every engagement."
-          lead="No bespoke methodology slides. The process is operator-tested across 42 engagements, and it survives contact with reality."
+          lead="No bespoke methodology slides. The process is operator-tested across enterprise engagements, and it survives contact with reality."
         />
         <div className="ms-method">
           {steps.map(s => (
@@ -371,36 +335,36 @@ const ResourcesSection = () => (
         lead="Long-form pieces from the engineers who run the systems. No thought leadership. No conference recap."
       />
       <div className="ms-grid-3">
-        <article className="ms-resource ms-resource--feat" style={{gridColumn:"span 2"}}>
+        <article className="ms-resource ms-resource--feat ms-resource--placeholder" style={{gridColumn:"span 2"}}>
           <div className="img"></div>
           <div className="body">
-            <span className="tag">Featured · 18 min read</span>
-            <h4>Why your AIOps deployment stalls at the 60% threshold (and what to do about it).</h4>
-            <div className="meta">By Connexr SRE — published Mar 2026</div>
+            <span className="tag">Featured · — min read</span>
+            <h4>Field note — title pending.</h4>
+            <div className="meta">Author &amp; date pending</div>
           </div>
         </article>
-        <article className="ms-resource">
+        <article className="ms-resource ms-resource--placeholder">
           <div className="img"></div>
           <div className="body">
-            <span className="tag">Field note · 7 min</span>
-            <h4>P1 retro: 47 alerts to one root cause in 9 minutes.</h4>
-            <div className="meta">Feb 2026</div>
+            <span className="tag">Field note · — min</span>
+            <h4>Field note — title pending.</h4>
+            <div className="meta">Date pending</div>
           </div>
         </article>
-        <article className="ms-resource">
+        <article className="ms-resource ms-resource--placeholder">
           <div className="img"></div>
           <div className="body">
-            <span className="tag">Reference · 12 min</span>
-            <h4>An on-prem RAG architecture that clears HIPAA review.</h4>
-            <div className="meta">Jan 2026</div>
+            <span className="tag">Reference · — min</span>
+            <h4>Reference — title pending.</h4>
+            <div className="meta">Date pending</div>
           </div>
         </article>
-        <article className="ms-resource">
+        <article className="ms-resource ms-resource--placeholder">
           <div className="img"></div>
           <div className="body">
-            <span className="tag">Field note · 5 min</span>
-            <h4>FinOps: real $-takeout vs the percentage trap.</h4>
-            <div className="meta">Dec 2025</div>
+            <span className="tag">Field note · — min</span>
+            <h4>Field note — title pending.</h4>
+            <div className="meta">Date pending</div>
           </div>
         </article>
       </div>

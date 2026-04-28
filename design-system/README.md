@@ -31,9 +31,9 @@ This system was built from the following inputs. None are pre-loaded for the rea
 
 - `uploads/DESIGN-BRIEF.md` — historical snapshot of the brief that fed Claude Design at v1 generation time. **The canonical brief lives at `/docs/DESIGN-BRIEF.md`** at the repo root — that is the single source of truth on conflicts. Treat `uploads/` as immutable provenance, not as the working copy.
 - `uploads/connexr-logo.png` — full brand lock-up (logo mark + wordmark + endorsement line).
-- **GitHub repo:** `va-3/Connexr-Redesign` (branch `main`) — *empty placeholder at time of build (only an 18-byte README). No production code, no Figma exports, no component library.* If a real codebase is added later, re-run the design-system pass to capture component implementations.
+- **GitHub repo:** `va-3/Connexr-Redesign` — at the time this kit was generated the repo was a placeholder; production scaffolding (Next.js app, CI, etc.) lands separately and consumes these tokens.
 
-> **Caveat for the reader:** because the GitHub repo has no source code, every UI component in `ui_kits/` is a faithful interpretation of the design brief, **not** a recreation of shipping code. Spacing, color, type, and component patterns come straight from the brief; specific section copy and microcopy below are written to match the documented voice.
+> **Caveat for the reader:** the UI components in `ui_kits/` are reference recreations from the brief, not yet a port of shipping production code. Spacing, color, type, and component patterns come straight from the design system tokens. Section copy uses placeholder content where real numbers, client names, testimonials, or product screenshots are not yet approved by RSA Tech leadership — those are tracked as content blockers.
 
 ---
 
