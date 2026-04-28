@@ -29,7 +29,7 @@ This design system encodes Connexr's brand and product UI vocabulary so designer
 
 This system was built from the following inputs. None are pre-loaded for the reader; track them down separately if you need higher-fidelity recreations.
 
-- `uploads/DESIGN-BRIEF.md` — canonical brand & token reference (single source of truth — overrides everything else here on conflict).
+- `uploads/DESIGN-BRIEF.md` — historical snapshot of the brief that fed Claude Design at v1 generation time. **The canonical brief lives at `/docs/DESIGN-BRIEF.md`** at the repo root — that is the single source of truth on conflicts. Treat `uploads/` as immutable provenance, not as the working copy.
 - `uploads/connexr-logo.png` — full brand lock-up (logo mark + wordmark + endorsement line).
 - **GitHub repo:** `va-3/Connexr-Redesign` (branch `main`) — *empty placeholder at time of build (only an 18-byte README). No production code, no Figma exports, no component library.* If a real codebase is added later, re-run the design-system pass to capture component implementations.
 
