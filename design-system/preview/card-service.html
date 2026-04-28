@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Service card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>body{margin:0;padding:24px;background:#F8FAFC;font-family:var(--font-body);}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.card{background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:24px;transition:200ms;}
+.card.hover{border-color:#B8C2DD;box-shadow:0 8px 24px rgba(18,37,96,0.06);}
+.icon{width:24px;height:24px;border:1.5px solid #122560;border-radius:4px;display:inline-block;margin-bottom:16px;position:relative;}
+.icon::after{content:"";position:absolute;inset:5px;border:1.5px solid #122560;border-radius:2px;}
+h4{font:600 20px/1.2 "DM Sans";color:#122560;margin:0 0 6px;}
+p{font:400 14px/1.55 "IBM Plex Sans";color:#475569;margin:0 0 12px;}
+a{font:500 13px/1 "IBM Plex Sans";color:#122560;}
+.tag{font:500 10px/1 "IBM Plex Sans";text-transform:uppercase;letter-spacing:.08em;color:#64748B;display:block;margin-top:12px;}
+</style></head><body>
+<div class="row">
+  <div class="card">
+    <span class="icon"></span>
+    <h4>Managed AIOps</h4>
+    <p>24×7 incident triage, alert correlation, and runbook execution. Your team owns architecture; we own pages.</p>
+    <a>Read more →</a>
+    <span class="tag">default state</span>
+  </div>
+  <div class="card hover">
+    <span class="icon"></span>
+    <h4>AI Transformation</h4>
+    <p>Discover, architect, and ship LLM workloads in production. Includes evals, guardrails, observability.</p>
+    <a>Read more →</a>
+    <span class="tag">hover state</span>
+  </div>
+</div>
+</body></html>

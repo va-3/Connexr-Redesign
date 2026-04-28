@@ -1,0 +1,291 @@
+/* =============================================================
+   Connexr Design System — Foundations
+   Tokens are LOCKED per the brand brief. Do not invent values.
+   =============================================================
+   Fonts loaded from Google Fonts:
+     - DM Sans       (display + headings + logo wordmark match)
+     - IBM Plex Sans (body)
+     - IBM Plex Mono (console / ticker / code)
+     - IBM Plex Serif (editorial display variants only)
+   ============================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@400;700&display=swap");
+
+:root {
+  /* -----------------------------------------------------------
+     Color — brand
+     ----------------------------------------------------------- */
+  --navy-900:  #122560;   /* primary brand. logo wordmark, headings on light */
+  --navy-950:  #0F1629;   /* deepest. body text on light, dark surfaces      */
+  --navy-800:  #1B3284;   /* hover/raise on navy                             */
+  --navy-200:  #B8C2DD;   /* card hover border                               */
+  --navy-100:  #DDE2EE;   /* subtle navy tint                                */
+
+  --orange-500: #F27A1A;  /* accent / CTA / focus ring / mark dots          */
+  --orange-600: #DB6A0E;  /* primary CTA hover                              */
+  --orange-100: #FDEBD8;  /* subtle accent tint (rare, charts only)         */
+
+  --bg-50:     #F8FAFC;   /* light section bg     */
+  --white:     #FFFFFF;   /* card surface         */
+  --slate-700: #334155;   /* body on light (alt)  */
+  --slate-600: #475569;   /* body muted           */
+  --slate-500: #64748B;   /* secondary, captions, eyebrow labels  */
+  --slate-400: #94A3B8;   /* placeholder text     */
+  --slate-300: #CBD5E1;   /* hairlines, dividers  */
+  --slate-200: #E2E8F0;   /* borders default      */
+  --slate-100: #F1F5F9;   /* ghost button hover   */
+
+  /* status (muted, never neon) */
+  --success-600: #15803D;
+  --success-100: #DCFCE7;
+  --warn-600:    #B45309;
+  --warn-100:    #FEF3C7;
+  --error-600:   #B91C1C;
+  --error-100:   #FEE2E2;
+
+  /* -----------------------------------------------------------
+     Color — semantic surfaces & ink
+     ----------------------------------------------------------- */
+  --bg:           var(--white);
+  --bg-muted:     var(--bg-50);
+  --bg-inverse:   var(--navy-950);
+  --surface-card: var(--white);
+
+  --fg:          var(--navy-950);     /* default body ink, light bg */
+  --fg-strong:   var(--navy-900);     /* headings, brand voice      */
+  --fg-muted:    var(--slate-600);    /* secondary body             */
+  --fg-subtle:   var(--slate-500);    /* captions, eyebrow          */
+  --fg-on-dark:  rgba(255,255,255,0.92);
+  --fg-on-dark-muted: rgba(255,255,255,0.64);
+
+  --accent:      var(--orange-500);
+  --accent-fg:   var(--white);
+  --accent-hover:var(--orange-600);
+
+  --border:      var(--slate-200);
+  --border-strong: var(--slate-300);
+  --focus-ring:  var(--orange-500);
+
+  /* -----------------------------------------------------------
+     Type — families
+     ----------------------------------------------------------- */
+  --font-display: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body:    "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, monospace;
+  --font-serif:   "IBM Plex Serif", ui-serif, Georgia, "Times New Roman", serif;
+
+  /* Type scale (LOCKED) */
+  --text-12: 12px;
+  --text-14: 14px;
+  --text-16: 16px;
+  --text-18: 18px;
+  --text-24: 24px;
+  --text-32: 32px;
+  --text-48: 48px;
+  --text-72: 72px;
+  --text-96: 96px;
+
+  /* Line-heights */
+  --lh-display: 1.1;
+  --lh-heading: 1.15;
+  --lh-body:    1.55;
+  --lh-tight:   1.25;
+
+  /* Tracking */
+  --track-display: -0.025em;   /* applied at 48px+ */
+  --track-eyebrow: 0.08em;     /* uppercase labels */
+
+  /* Weights */
+  --w-regular: 400;
+  --w-medium:  500;
+  --w-semibold:600;
+  --w-bold:    700;
+
+  /* -----------------------------------------------------------
+     Spacing (8pt grid — LOCKED)
+     ----------------------------------------------------------- */
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-40: 160px;
+
+  --container-max: 1280px;
+  --container-pad: 48px;     /* desktop */
+  --container-pad-mobile: 24px;
+  --section-pad: 96px;       /* desktop vertical section padding */
+  --grid-gutter: 24px;
+
+  /* -----------------------------------------------------------
+     Radii (no pill CTAs in default system)
+     ----------------------------------------------------------- */
+  --radius-0:  0;
+  --radius-sm: 4px;   /* inputs, chips */
+  --radius-md: 8px;   /* cards, buttons (default) */
+  --radius-lg: 12px;  /* hero panels, large surfaces */
+
+  /* -----------------------------------------------------------
+     Elevation — soft, navy-tinted (never gray-black)
+     ----------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(18, 37, 96, 0.05);
+  --shadow-md: 0 8px 24px rgba(18, 37, 96, 0.06);
+  --shadow-lg: 0 20px 48px rgba(18, 37, 96, 0.10);
+  --shadow-focus: 0 0 0 2px var(--orange-500);
+
+  /* -----------------------------------------------------------
+     Motion — subtle only
+     ----------------------------------------------------------- */
+  --ease-standard: cubic-bezier(0.2, 0, 0.2, 1);
+  --ease-out:      cubic-bezier(0, 0, 0.2, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+
+  /* -----------------------------------------------------------
+     Layout helpers
+     ----------------------------------------------------------- */
+  --nav-height: 64px;
+  --hairline: 1px solid var(--border);
+}
+
+/* =============================================================
+   Base reset (light bg; brand defaults)
+   ============================================================= */
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--orange-500); color: #fff; }
+
+/* =============================================================
+   Semantic type primitives
+   Use these classes (or compose via the variables) instead of
+   inventing one-off sizes.
+   ============================================================= */
+
+.display {
+  font-family: var(--font-display);
+  font-weight: var(--w-bold);
+  font-size: var(--text-96);
+  line-height: var(--lh-display);
+  letter-spacing: var(--track-display);
+  color: var(--fg-strong);
+}
+
+.h1 {
+  font-family: var(--font-display);
+  font-weight: var(--w-bold);
+  font-size: var(--text-72);
+  line-height: var(--lh-display);
+  letter-spacing: var(--track-display);
+  color: var(--fg-strong);
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: var(--w-bold);
+  font-size: var(--text-48);
+  line-height: var(--lh-display);
+  letter-spacing: var(--track-display);
+  color: var(--fg-strong);
+}
+
+.h3 {
+  font-family: var(--font-display);
+  font-weight: var(--w-bold);
+  font-size: var(--text-32);
+  line-height: var(--lh-heading);
+  color: var(--fg-strong);
+}
+
+.h4 {
+  font-family: var(--font-display);
+  font-weight: var(--w-semibold);
+  font-size: var(--text-24);
+  line-height: var(--lh-heading);
+  color: var(--fg-strong);
+}
+
+.lead {
+  font-family: var(--font-body);
+  font-weight: var(--w-regular);
+  font-size: var(--text-18);
+  line-height: var(--lh-body);
+  color: var(--fg);
+  max-width: 640px;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-weight: var(--w-regular);
+  font-size: var(--text-16);
+  line-height: var(--lh-body);
+  color: var(--fg);
+}
+
+.body-sm {
+  font-family: var(--font-body);
+  font-weight: var(--w-regular);
+  font-size: var(--text-14);
+  line-height: var(--lh-body);
+  color: var(--fg-muted);
+}
+
+.caption {
+  font-family: var(--font-body);
+  font-weight: var(--w-regular);
+  font-size: var(--text-12);
+  line-height: var(--lh-tight);
+  color: var(--fg-subtle);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: var(--w-medium);
+  font-size: var(--text-12);
+  text-transform: uppercase;
+  letter-spacing: var(--track-eyebrow);
+  color: var(--fg-subtle);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-weight: var(--w-regular);
+  font-size: var(--text-14);
+  line-height: var(--lh-body);
+  color: var(--fg);
+}
+
+.serif-display {
+  font-family: var(--font-serif);
+  font-weight: var(--w-bold);
+  font-size: var(--text-72);
+  line-height: var(--lh-display);
+  letter-spacing: var(--track-display);
+  color: var(--fg-strong);
+}
+
+/* Default semantic tags inherit the same scale. Override locally
+   if you need to. */
+h1 { font: var(--w-bold) var(--text-72)/var(--lh-display) var(--font-display); letter-spacing: var(--track-display); color: var(--fg-strong); }
+h2 { font: var(--w-bold) var(--text-48)/var(--lh-display) var(--font-display); letter-spacing: var(--track-display); color: var(--fg-strong); }
+h3 { font: var(--w-bold) var(--text-32)/var(--lh-heading) var(--font-display); color: var(--fg-strong); }
+h4 { font: var(--w-semibold) var(--text-24)/var(--lh-heading) var(--font-display); color: var(--fg-strong); }
+p  { margin: 0 0 var(--space-4); }
+a  { color: var(--fg-strong); text-decoration: none; }
+a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+code, kbd, pre, samp { font-family: var(--font-mono); font-size: 0.92em; }
+hr { border: 0; border-top: var(--hairline); }

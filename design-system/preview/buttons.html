@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>body{margin:0;padding:24px;background:#fff;font-family:var(--font-body);}
+.grid{display:grid;grid-template-columns:repeat(4,auto);gap:12px 16px;align-items:center;}
+.btn{font-family:var(--font-body);font-weight:500;font-size:14px;padding:12px 24px;border-radius:8px;border:1px solid transparent;cursor:pointer;transition:background 200ms cubic-bezier(0.2,0,0.2,1);}
+.primary{background:#F27A1A;color:#fff;}
+.primary.hover{background:#DB6A0E;}
+.primary.focus{box-shadow:0 0 0 2px #F27A1A,0 0 0 4px #fff;}
+.primary.disabled{opacity:.4;}
+.secondary{background:#122560;color:#fff;}
+.secondary.hover{background:#0F1629;}
+.ghost{background:transparent;color:#122560;border-color:#E2E8F0;}
+.ghost.hover{background:#F1F5F9;}
+.lbl{font-family:var(--font-mono);font-size:10px;color:var(--fg-subtle);text-transform:uppercase;letter-spacing:.08em;}
+</style></head><body>
+<div class="grid">
+  <span class="lbl">primary</span>
+  <button class="btn primary">Book a demo</button>
+  <button class="btn primary hover">Book a demo</button>
+  <button class="btn primary focus">Book a demo</button>
+
+  <span class="lbl">secondary</span>
+  <button class="btn secondary">Explore platform</button>
+  <button class="btn secondary hover">Explore platform</button>
+  <span></span>
+
+  <span class="lbl">ghost</span>
+  <button class="btn ghost">Read case study</button>
+  <button class="btn ghost hover">Read case study</button>
+  <span></span>
+
+  <span class="lbl">disabled</span>
+  <button class="btn primary disabled">Submitting…</button>
+  <span></span><span></span>
+</div>
+</body></html>

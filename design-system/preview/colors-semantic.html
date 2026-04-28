@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Semantic colors</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body{margin:0;padding:24px;background:#fff;font-family:var(--font-body);}
+  .row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .group{border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+  .pair{display:grid;grid-template-columns:1fr 1fr;}
+  .chip{height:64px;display:flex;align-items:flex-end;padding:8px 10px;font-family:var(--font-mono);font-size:11px;}
+  .label{padding:8px 12px;font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--fg-strong);border-top:1px solid var(--border);}
+  .hex-light{color:var(--fg-strong);}
+  .hex-dark{color:#fff;opacity:.85;}
+</style></head><body>
+<div class="row">
+  <div class="group">
+    <div class="pair">
+      <div class="chip" style="background:#DCFCE7"><span class="hex-light">#DCFCE7</span></div>
+      <div class="chip" style="background:#15803D"><span class="hex-dark">#15803D</span></div>
+    </div><div class="label">success — 100 / 600</div>
+  </div>
+  <div class="group">
+    <div class="pair">
+      <div class="chip" style="background:#FEF3C7"><span class="hex-light">#FEF3C7</span></div>
+      <div class="chip" style="background:#B45309"><span class="hex-dark">#B45309</span></div>
+    </div><div class="label">warn — 100 / 600</div>
+  </div>
+  <div class="group">
+    <div class="pair">
+      <div class="chip" style="background:#FEE2E2"><span class="hex-light">#FEE2E2</span></div>
+      <div class="chip" style="background:#B91C1C"><span class="hex-dark">#B91C1C</span></div>
+    </div><div class="label">error — 100 / 600</div>
+  </div>
+</div>
+</body></html>
