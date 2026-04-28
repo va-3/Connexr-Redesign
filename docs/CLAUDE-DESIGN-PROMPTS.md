@@ -31,92 +31,86 @@ The Claude Design export becomes the production frontend. Claude Code wraps it w
 
 ---
 
-## PROMPT 1 — Wireframe Round
+## PROMPT 1 — Wireframe Round (v2, tightened)
 
 ```
 The Connexr design system is attached. /docs/DESIGN-BRIEF.md is the canonical brief. Both are non-negotiable.
 
-Wireframe phase: we're comparing TWO distinct layout systems / information architectures for the marketing site landing page. Aesthetics are locked by the design system; what we're testing is composition, hierarchy, and section flow.
+We're producing wireframes for the marketing site landing page. Two layout / IA variants in one canvas. We're testing composition, hierarchy, and section flow — NOT aesthetics (those are locked by the design system).
 
-Wireframe fidelity here means: design system tokens applied for type and color (so we see real visual treatment), but minimal decorative elements (no images, no illustrations, no gradient panels). Layout structure and information hierarchy are the variable.
-
-Two wireframe variants, in one scrollable canvas:
+Wireframe fidelity here means: design system tokens applied for type and color (real visual treatment), but minimal decoration — no images, no illustrations, no gradient panels, no decorative graphics. Layout structure is the variable.
 
 VARIANT A — Classical
-  Layout system: symmetric, centered grid. Sequential information disclosure. Sparse density. Heritage gravitas.
-  Hero composition: type-led, fully centered. Eyebrow + H1 + subline + 2 CTAs + 4 cert chips, all centered. Generous whitespace. Pure white background — NO background visual, NO gradient, NO decorative element.
-  Section flow: standard sequential — Hero → Trust → Services → Tech Partners → Service Tabs → LeoRix → Industries → Proof → Methodology → Resources → CTA Strip → Footer.
-  Density: airy. Lots of whitespace between sections. One headline + one paragraph + one content block per section.
-  Cards: 3-up grid, equal weight, ample padding, hover-only differentiation.
-  Reference spirit: IBM Consulting · Stripe Press · Accenture (do NOT clone — extract spirit only).
-  Asymmetry constraint: at least ONE section breaks the centered grid for visual rhythm.
+  Symmetric centered grid. Sequential flow. Sparse density. Heritage gravitas (IBM Consulting / Stripe Press tradition).
+  Hero: type-led, fully centered. Eyebrow + H1 + subline + 2 CTAs + 4 cert chips, all centered. Pure white background, no visual element on either side.
+  Density: airy. One content block per section. Generous section padding.
+  Cards: 3-up grid, equal weight.
+  Asymmetry: at least ONE section breaks the centered rhythm.
 
 VARIANT B — Editorial
-  Layout system: asymmetric. Layered density. Type-led with strong information hierarchy. Modern operator-credible.
-  Hero composition: type-led, asymmetric 60/40 left-right split. Left = eyebrow + H1 + subline + CTAs + cert chips. Right = a clean schematic diagram showing abstract AIOps signal flow as shape relationships only — three node clusters connected by thin orange lines, NO numbers, NO service names, NO fake metrics, NO product UI. Pure conceptual.
-  Section flow: 13 sections with editorial rhythm — alternating dense/sparse sections, asymmetric card grids in at least 4 sections, explicit visual breaks every 3 sections.
-  Density: tight. Multiple data points per section (where placeholders allow).
-  Cards: mixed treatment — some 3-up, some featured-and-supporting (1 featured + 2 supporting in Resources, 2-up in service deep-dives).
-  Reference spirit: Linear · Vercel · Datadog blog · Stripe Press editorials.
-  Asymmetry constraint: asymmetry is the default; only the CTA strip and Footer need to be symmetric.
+  Asymmetric layered grid. Modern operator-credible (Linear / Vercel / Datadog tradition).
+  Hero: type-led, asymmetric 60/40 split. Left = eyebrow + H1 + subline + CTAs + cert chips. Right = a clean schematic of abstract AIOps signal flow — three node clusters connected by thin orange lines, NO numbers, NO service names, NO product UI, no labels. Pure conceptual.
+  Density: tight. Multiple data points per section.
+  Cards: mixed treatment — 3-up, featured-and-supporting, 2-up depending on content.
+  Asymmetry: default; only CTA strip and Footer stay symmetric.
 
-Hero copy (use IDENTICAL copy across both variants):
-
+HERO COPY (identical across both variants):
   Eyebrow: AIOPS · MANAGED SERVICES
-  H1: AI at the Core. Scale at Speed.
+  H1 (Title Case): AI at the Core. Scale at Speed.
   Subline: We run AI-native operations for enterprise IT — eliminating alert fatigue, automating incident response, and giving your team back the hours.
   Primary CTA: Book a demo
   Secondary CTA: Explore the platform
   Trust badges: SOC 2 Type II · HIPAA · ISO 27001 · GDPR
 
-Same content rules across both variants:
+SECTION ORDER (13 sections, both variants):
+  Nav → Hero → Trust Strip → Services → Tech Partners → Service Tabs → LeoRix AI → Industries → Proof → Methodology → Resources → CTA Strip → Footer
 
+CONTENT RULES (same in both variants):
   Industries (6 cards): Healthcare · FinTech · Manufacturing · Insurance · Retail · AIOps & IT Ops
-  Industry captions are CAPABILITY descriptions only, not metrics: "HIPAA-eligible deployments", "Latency- and audit-bound systems", "OT/IT convergence", "Claims, underwriting, fraud", "Peak readiness, omni-stack", "Greenfield + brownfield".
-  Service overview (6 cards): Managed AIOps · AI Transformation · Cloud & Infrastructure · Enterprise Security · Data & Analytics · Digital Strategy
-  Tech partners (6, no tier badges yet): AWS · Azure · GCP · ServiceNow · Datadog · Microsoft 365
-  Methodology (5 steps with PROCESS descriptions, not metrics): Discover (two-week instrumented audit) → Architect (reference architecture for compliance posture) → Build (engineering — ours, yours, or joint pod) → Deploy (cutover with rollback plan; we carry the pager) → Optimize (quarterly read-out — cost, MTTR, change-failure rate)
+  Industry captions = capability descriptions, max 6 words each: "HIPAA-eligible deployments", "Latency- and audit-bound systems", "OT/IT convergence", "Claims, underwriting, fraud", "Peak readiness, omni-stack", "Greenfield + brownfield".
+  Services (6 cards): Managed AIOps · AI Transformation · Cloud & Infrastructure · Enterprise Security · Data & Analytics · Digital Strategy
+  Tech partners (6, plain — no tier badges): AWS · Azure · GCP · ServiceNow · Datadog · Microsoft 365
+  Methodology (5 process steps, NOT outcomes): Discover (two-week instrumented audit) → Architect (reference architecture for compliance posture) → Build (engineering — ours, yours, or joint pod) → Deploy (cutover with rollback plan; we carry the pager) → Optimize (quarterly read-out — cost, MTTR, change-failure rate)
   Compliance chips: SOC 2 Type II · HIPAA · ISO 27001 · GDPR
 
-ZERO-FABRICATION RULES (non-negotiable):
-  - DO NOT invent client names. Trust strip = 6 placeholder cells labeled "Client logo" (slate-200 outlined rectangle, label centered in slate-500 mono 12px).
-  - DO NOT invent metrics. No "2.8M alerts", no "64% MTTR", no "42 engagements", no quantified claims of any kind. Stat slots in Proof = labeled placeholder boxes ("Uptime SLA — pending", "Engagements — pending", "MTTR reduction — pending", "Engineer-hours saved — pending"), italic slate-500, OR remove the stat row entirely if it weakens the section.
-  - DO NOT invent testimonials. No fictional people, quotes, or companies. Case study slot in Proof = "Case study available under NDA — request access →" link only. NO quote, NO person, NO company name.
-  - DO NOT invent product UI. No fake LeoRix console, no fake dashboards, no fake screenshots, no fake metric tiles. LeoRix section = paragraph describing what LeoRix AI does + "Read the spec →" ghost link. NO numerical claims about product performance.
-  - DO NOT invent article titles. Resources section = "Title pending" placeholders for all articles. Generic "— min read" tags. "Date pending" meta lines. Italicize the placeholder strings so they're visually distinct from real content.
-  - Industry use case captions ARE allowed (capability descriptions, not metrics).
-  - Service descriptions ARE allowed (what we offer in capability terms). Avoid contract-implying language ("SLA-backed", etc.) unless explicitly verified.
-  - Methodology process descriptions ARE allowed (one line per step, describing the PROCESS, not invented outcomes).
+ZERO-FABRICATION (non-negotiable; this project has had problems with invented content):
+  - NO invented client names. Trust strip = 6 placeholder cells, slate-200 outlined rectangle, label "Client logo" centered (italic slate-500 mono 12px).
+  - NO invented metrics. No "2.8M alerts", no "64% MTTR", no "42 engagements", no quantified claims. Stat slots in Proof = labeled placeholders, italic slate-500: "Uptime SLA — pending", "Engagements — pending", "MTTR reduction — pending", "Engineer-hours saved — pending". OR drop the stats row and show only cert chips + "Case study available under NDA — request access →" link if simpler reads stronger.
+  - NO invented testimonials. No fictional people, quotes, or companies. Case study slot = NDA link only.
+  - NO invented product UI. No fake LeoRix console, no fake dashboards, no fake metric tiles. LeoRix section = a paragraph describing what LeoRix does + a "Read the spec →" link.
+  - NO invented article titles. Resources cards all show italic slate-500 "Title pending." with generic "— min read" tags and "Date pending" meta.
+  - Industry captions are CAPABILITIES, not metrics — allowed.
+  - Service descriptions are CAPABILITIES, not contract terms ("SLA-backed", etc.) unless verified — flagged otherwise.
+  - Methodology one-liners describe PROCESS, not outcomes.
 
-Placeholder labeling rule: every placeholder must be visually obvious. Italicize the placeholder string in slate-500, suffix with "(pending)" or "— pending" where appropriate. Real content (cert chips, industry names, service names, methodology step names) is NOT italicized.
+PLACEHOLDER LABELING: every placeholder is italicized, slate-500, suffixed with "(pending)" or "— pending" where appropriate. Real content (cert chips, industry names, service names, methodology step names) is NOT italicized.
 
-Layout output:
-  - One scrollable canvas, two panels stacked vertically.
-  - Each panel renders the FULL landing page (all 13 sections).
-  - Each panel labeled at top with: "VARIANT A — Classical · symmetric · sparse" / "VARIANT B — Editorial · asymmetric · dense".
-  - Render at full desktop width (1440px) only — mobile/tablet wireframes come in the high-fidelity round.
+OUTPUT FORMAT:
+  - One scrollable canvas. Two panels stacked vertically.
+  - Each panel renders all 13 sections at full desktop width (1440px).
+  - Each panel labeled at top: "VARIANT A — Classical · symmetric · sparse" / "VARIANT B — Editorial · asymmetric · dense".
+  - No mobile / tablet renders this round; that's the high-fidelity stage.
 
-Senior-FE quality markers (mandatory in both variants):
-  - Every gap on the 8pt grid. No 13px, no 21px. Section padding = 96px desktop.
+QUALITY BAR (mandatory in both variants):
+  - Every spacing value on the 8pt grid (4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 160). Section padding = 96px desktop.
   - Hierarchy via type weight + size + spatial separation, NOT color saturation.
-  - One accent moment per section maximum (orange used for CTA, focus ring, or single structural mark — never as section background or gradient).
-  - Em-dashes (—) for parenthetical clauses, curly apostrophes/quotes throughout. Never straight quotes.
-  - Buttons render with hover and focus-visible states annotated visibly on the canvas (one of each per variant, with a small marker like "← hover" or "← focus-visible").
-  - H1 is Title Case ("AI at the Core. Scale at Speed."). NOT lowercase.
+  - One accent moment per section — orange #F27A1A used for CTA, focus ring, or single structural mark only. Never as section background. Never gradient-paired.
+  - Em-dashes (—) for parenthetical clauses, curly apostrophes/quotes throughout. No straight quotes.
+  - H1 in Title Case. Never lowercase.
   - Border radii from {0, 4, 8, 12} only. No pill (9999) buttons.
-  - JSX export must NOT contain dead code — only render what's used. No defunct components left in the source.
+  - Banlist applies (Inter, purple gradients, glass morphism, neon glows, rainbow accents, sparkle emojis, hype words).
+  - JSX export must contain only rendered components. No dead code.
 
-Reference-vs-system conflict rule: if any reference would push the design outside the locked design system tokens, surface the conflict before generating — do NOT break the system to chase the reference.
+If a reference (IBM, Stripe, Linear, etc.) would push the design outside the locked design system tokens, surface the conflict before generating — do NOT break the system to chase a reference.
 
-DO NOT GENERATE YET. Before building, ask me 4–6 specific questions covering:
-1. Per-section density preference (does the user want both variants tight or both airy, or one of each as default?)
-2. Resources section count (4 placeholder articles as in v1, or fewer/more)
-3. Whether the LeoRix section should remain one of the visible 13 sections OR be promoted to its own subpage with just a teaser block on the landing
-4. Whether any section should be REMOVED entirely from one or both variants (e.g., remove Resources if there's no content runway)
-5. Whether the schematic diagram in Variant B's hero should use Lucide-style line art OR a simpler geometric arrangement
-6. Anything else necessary to disambiguate the two compositions
+DO NOT GENERATE YET. Ask me 4–5 specific questions covering ONLY:
+1. Density preference per variant (both tight, both airy, or one of each as default?)
+2. Resources section count (4 placeholder articles, fewer, more, or remove the section entirely if there's no content runway?)
+3. Whether the LeoRix section stays in the 13-section landing OR moves to its own subpage with just a teaser block here
+4. Whether any other section should be removed entirely from one or both variants
+5. Anything specific to the schematic diagram in Variant B's hero that needs to be locked
 
-Number the questions, group by topic. After I answer, generate both variants in one canvas.
+Don't ask about brand voice, color, type, anti-defaults, or buyer persona — those are in the brief. Number the questions, group by topic. After I answer, generate both variants in one canvas.
 ```
 
 ---
