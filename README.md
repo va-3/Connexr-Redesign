@@ -63,10 +63,12 @@ cd Connexr-Redesign
 To preview the design system in a browser:
 
 ```bash
-# from the repo root
+# from the repo root — pick whichever you have:
 cd design-system/ui_kits/marketing-site
-python3 -m http.server 8080
-# then open http://localhost:8080/index.html
+python3 -m http.server 8080      # macOS / Linux default
+# OR
+npx serve .                      # cross-platform; needs Node
+# then open http://localhost:8080/index.html (or the URL serve prints)
 ```
 
 Same pattern for `design-system/ui_kits/aiops-console/index.html`.

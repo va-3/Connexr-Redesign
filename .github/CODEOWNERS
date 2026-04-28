@@ -1,0 +1,30 @@
+# GitHub CODEOWNERS — review routing
+#
+# Each line maps a file pattern to the user(s) automatically requested as
+# reviewers when a PR touches matching files. The LAST matching line wins.
+# See https://docs.github.com/en/repositories/managing-your-repositories-settings-and-customizations/customizing-your-repository/about-code-owners
+#
+# Update this file as the team grows. Entries marked TBD will be filled in
+# when offshore engineers and the brand/product owner are designated.
+
+# Default — every change requires the current maintainer
+*                                          @va-3
+
+# Repo governance — same default for now; may want a senior reviewer later
+/.github/                                  @va-3
+/CONTRIBUTING.md                           @va-3
+/CODE_OF_CONDUCT.md                        @va-3
+/LICENSE                                   @va-3
+/SECURITY.md                               @va-3
+
+# Brand & design system — LOCKED. Add brand owner when designated.
+/design-system/colors_and_type.css         @va-3
+/design-system/README.md                   @va-3
+/design-system/SKILL.md                    @va-3
+/design-system/assets/                     @va-3
+/docs/DESIGN-BRIEF.md                      @va-3
+/docs/DECISIONS.md                         @va-3
+
+# Applications (added as they land)
+# /apps/web/                               @va-3 # frontend lead TBD
+# /apps/api/                               @va-3 # backend lead TBD
