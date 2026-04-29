@@ -258,100 +258,75 @@ OUTPUT
 
 ---
 
-## PROMPT 4 — Hero Architecture Spin (replaces the funnel schematic)
+## PROMPT 4 — Type-Led Hero (interim — no diagram, pending product details)
 
-> Surgical replacement of the hero right-column schematic in the existing `Production.html`. Swaps the saturated funnel-shape diagram for a labeled five-layer operating-system schematic in an engineering-drawing aesthetic. Cream surface, Plex Mono labels, compliance envelope as structural element, single pulsing accent on the LeoRix node.
+> Surgical replacement of the hero right-column schematic in the existing `Production.html`. Drops the funnel diagram entirely. Replaces with a confident type-led, single-column hero that makes ZERO structural or product claims. To be used until verified product details from Connexr leadership are available; only at that point should a real architecture artifact be designed.
+>
+> **A previous version of this prompt (`Hero Architecture Spin`) was committed and then withdrawn** because it baked in unverified assumptions about LeoRix's runtime structure (a five-layer INGEST → SUPPRESS → ENRICH → ACT → ATTEST stack with LeoRix in layer 03 doing root-cause inference). Those layers, those capability descriptors, and that load-bearing role were inferred from generic AIOps patterns, not from anything Connexr leadership has confirmed. The zero-fabrication rule applies to product structure as strictly as it applies to client names, metrics, and testimonials.
 
 ```
 The Connexr design system is attached. /docs/DESIGN-BRIEF.md is the canonical brief. The locked Variant B layout from the production round stays canonical.
 
-SCOPE: replace ONLY the hero right-column schematic in Production.html. Do NOT regenerate or modify any other section, copy, or component. The hero left column (eyebrow, H1, subline, CTAs, cert chips), all 12 other sections, and the canvas chrome (panel labels, breakpoint frames) remain identical to the current Production.html. Apply the same hero-schematic replacement consistently across all three breakpoints (desktop 1440 / tablet 768 / mobile 375).
+SCOPE: replace ONLY the hero composition in Production.html with a type-led, single-column hero that has no diagram and no right-side graphic. Do NOT regenerate or modify any other section, copy, or component. The Trust strip, Services, Tech Partners, Service Tabs, LeoRix section, Industries, Proof, Methodology, Resources, CTA Strip, and Footer remain identical. Apply the new hero treatment consistently across all three breakpoints (desktop 1440 / tablet 768 / mobile 375).
 
-REPLACE THE HERO SCHEMATIC
+WHY THIS CHANGE
 
-The current hero right visual is a funnel-shape SVG with three vertical clusters of 6 nodes connected by thin orange lines. That pattern reads as generic enterprise-IT clipart — saturated across the competitive set. Replace it with a deliberate, labeled architecture schematic rendered in an engineering-drawing register that reads as Connexr's own internal operating-system reference, not a stock template.
+The current hero is 60/40 asymmetric with a funnel-shape SVG on the right. That diagram is being dropped because it makes implicit structural claims about Connexr's product (LeoRix runtime topology) that have not been verified with leadership. Until product details are confirmed, the hero treatment becomes confident, type-led, single-column — restraint as signal. A real architecture diagram will be designed later when the product team provides verified specifications.
 
-VISUAL TREATMENT — "blueprint reference"
+NEW HERO COMPOSITION — single-column, type-led
 
-The new schematic occupies the same hero right column (40% width on desktop, 4:3 aspect ratio surface). Material treatment:
+- Container: max-width 1280px, centered. The hero occupies the full container width; there is no right-column visual.
+- Vertical stack inside the container, left-aligned (NOT centered):
+  1. A 32px-wide thin horizontal rule, 2px height, orange-500 #F27A1A. This is the single accent moment in the hero's body. 32px space below the rule.
+  2. Eyebrow label, IBM Plex Mono 12px UPPERCASE letter-spacing 0.08em slate-500: "AIOPS · MANAGED SERVICES". 16px space below.
+  3. H1 (Title Case): "AI at the Core. Scale at Speed." DM Sans 700 at 96px desktop / 72px tablet / 48px mobile. Line-height 1.05. Letter-spacing -0.025em. Color navy-900 #122560. Max-width 880px so it wraps onto two lines on most desktop viewports. 32px space below.
+  4. Subline (max-width 640px): "We run AI-native operations for enterprise IT — eliminating alert fatigue, automating incident response, and giving your team back the hours." IBM Plex Sans 400 18px navy-950 #0F1629. Line-height 1.55. 48px space below.
+  5. CTA row: primary "Book a demo" (orange-500 default state) + secondary "Explore the platform →" (focus-visible state pinned with .focus class so the 2px orange ring is visible without keyboard tabbing). Gap 12px between buttons. 48px space below.
+  6. Cert chip row: SOC 2 Type II · HIPAA · ISO 27001 · GDPR — each chip with the orange-500 leading dot (.cert-chip.dot pattern). Gap 8px between chips.
 
-- Surface: a 12px border-radius cream panel (#FAF8F1) with a 1px slate-200 outer hairline. The cream is intentional — it's warmer than pure white and signals "engineering reference document" rather than "marketing graphic". This is the only #FAF8F1 surface on the page; do not introduce it elsewhere.
-- Internal padding: 32px. All internal spacing on the strict 8pt grid (4, 8, 12, 16, 24, 32, 48).
-- Stroke-only construction throughout. Navy #122560 hairlines at 1px (default) and 2px (layer outlines). No filled shapes except the single accent node described below.
-- Typography on the diagram: IBM Plex Mono only. 11px slate-500 (#64748B) for layer body labels, 10px UPPERCASE letter-spacing 0.08em for layer titles, 9px slate-400 for footnote-style annotations. No display typeface inside the diagram — it is reference material, not editorial.
-- Reference annotations in the engineering-drawing tradition: "fig. 01 — leorix runtime, simplified" mono caption anchored top-left of the surface; "§ schematic-01.0" mono caption anchored bottom-right; faint 2-2 dotted dimension lines (1px slate-300) connecting external labels to their target rectangles where helpful.
-- No drop shadows, no gradients, no glow effects, no glass morphism. The surface is flat by intent.
+- Hero vertical padding: 144px top / 144px bottom on desktop; 96px / 96px on tablet; 72px / 72px on mobile.
 
-STRUCTURE — five-layer operating stack with compliance envelope
+STRUCTURAL DECORATION — subtle, non-claiming
 
-The diagram renders the LeoRix AIOps runtime as a five-layer vertical stack inside the cream surface. Each layer is a 2px slate-300 outlined rectangle, 8px border-radius, with an inner 1px slate-200 hairline 8px inside the outer outline (creating a thin double-line treatment that reads as engineering-drawing convention). Each layer carries a section-number title on the left and 2–4 sub-component descriptors on the right.
+- Behind the entire hero block, a subtle dot-grid pattern: 8pt grid (8px × 8px cell), 1px circular dots in navy-100 at 8% opacity. The grid is decorative texture suggesting "engineering surface" without claiming any structure. Dots align to the 8pt grid baseline.
+- The dot grid covers only the hero section's background (not the entire page). Implementation: CSS background-image with a small inline SVG dot pattern, OR a single repeating-radial-gradient.
+- No background gradient mesh, no glow, no animated background, no decorative graphic, no abstract illustration.
 
-From top to bottom (vertical stack, equal heights, 12px gaps between layers):
+NO RIGHT-SIDE VISUAL
 
-  § 01 · INGEST          telemetry · logs · traces · tickets
-  § 02 · SUPPRESS        correlation · dedup · noise floor
-  § 03 · ENRICH          LeoRix AI · root-cause inference · runbook selection
-  § 04 · ACT             auto-remediate · escalate · runbook execution
-  § 05 · ATTEST          evidence trail · audit log · change record
-
-A dotted-perimeter "compliance envelope" wraps the entire 5-layer stack. The envelope is a 2px slate-300 dashed (4-4 dasharray) rounded-rect with 12px border-radius, padded 16px outside the layer rectangles. Along the top edge of the envelope, centered, in IBM Plex Mono 10px slate-500 letter-spacing 0.06em UPPERCASE: "ATTESTED · SOC 2 TYPE II · HIPAA · ISO 27001 · GDPR". This makes the certifications part of the architecture, not a separate footer ornament.
-
-ACCENT — the only orange in the schematic
-
-Layer 03 (ENRICH) is the load-bearing element. Its outer rectangle outline is rendered in orange-500 #F27A1A (1px stroke, matching weight; no fill). Inside layer 03, immediately preceding the "LeoRix AI" text, a small filled orange-500 circle (radius 3px) anchored on the same baseline as the layer label.
-
-That circle is the single live element: a subtle pulse animation. CSS keyframe only, no JavaScript:
-- transform: scale(1.0) → scale(1.4) → scale(1.0) over 2.4s, ease-in-out
-- opacity: 1.0 → 0.55 → 1.0 in lockstep
-- transform-origin: center
-- animation: infinite
-- will-change: transform, opacity for GPU-accelerated motion
-- Wrap the entire @keyframes + animation declaration in @media (prefers-reduced-motion: no-preference) { ... }. Users with prefers-reduced-motion: reduce see the schematic fully static — the dot remains visible but does not animate.
-
-Orange appears nowhere else in the schematic. The hairlines, layer outlines (except 03), labels, dimension lines, captions, and compliance envelope are all navy or slate. The single-accent-per-section rule is respected.
-
-LAYOUT BEHAVIOR ACROSS BREAKPOINTS
-
-- Desktop 1440px: schematic surface fills the right 40% column, full 4:3 aspect ratio.
-- Tablet 768px: hero stacks single-column; schematic surface sits below the hero copy block at full container width, height auto, maintaining 4:3 internally.
-- Mobile 375px: schematic surface compresses to fit the column. Layer rectangles remain full-width within the surface; sub-component label text wraps to a second line if needed; mono labels reduce to 10px for layer body, 9px for titles. Pulse animation continues to honor prefers-reduced-motion.
-
-SVG IMPLEMENTATION SPEC
-
-- Inline <svg viewBox="0 0 480 360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="LeoRix AIOps runtime — five-layer architecture: ingest, suppress, enrich, act, attest, wrapped by an attested compliance envelope (SOC 2 Type II, HIPAA, ISO 27001, GDPR).">
-- Internal <text> elements use IBM Plex Mono via the existing @import (already loaded for the page). Do NOT add a second font load.
-- All <rect>, <line>, <text> elements in the schematic carry the same fill/stroke pattern; no inline color overrides except the orange accent rectangle and circle.
-- The animated <circle> is the only element with the .pulse class. CSS for the pulse keyframe is added inside the existing <style> block, not as a separate <style> tag.
+- Do NOT introduce any diagram, schematic, illustration, photograph, product mockup, terminal block, code snippet, ambient illustration, decorative graphic, or layered architecture rendering on the right side of the hero. The hero is fully single-column, type-led only.
+- Do NOT re-introduce the previously-drafted cream-surface architecture diagram or any variant of it.
 
 ZERO-FABRICATION (non-negotiable)
 
-- No invented metrics: no "47 alerts", no "MTTR ↓ 64%", no specific timing claims, no version strings. The schematic is structural, not data-driven.
-- No invented client names, no specific tool brands inside the schematic (no "Splunk", "Datadog", "ServiceNow" labels — those belong in the existing Tech Partners section, not the architecture).
-- LeoRix label inside layer 03 reads exactly "LeoRix AI · root-cause inference · runbook selection" — capability descriptors only, no quantified claims, no version number.
-- Compliance envelope text is exactly the four certifications already attested by Connexr: SOC 2 Type II, HIPAA, ISO 27001, GDPR. Do not add others.
-- "fig. 01" caption and "§ schematic-01.0" reference are typographic engineering-drawing convention — they do not invent a series of figures or sections that exist elsewhere.
+- No invented metrics, client names, testimonials, product UI, architectural claims, or product structure assumptions of any kind. Until product details are received from Connexr leadership, the hero MUST NOT visualize anything specific to LeoRix or the operating runtime.
+- The eyebrow, H1, subline, CTAs, and cert chips are the ONLY content in the hero. The certs are real, attested credentials; the rest is brand-level positioning that has been approved.
+- The orange accent rule above the eyebrow is purely typographic decoration — it is not a section number, not a visual reference to a diagram, and not a metaphor for any structure.
+
+LAYOUT BEHAVIOR ACROSS BREAKPOINTS
+
+- Desktop 1440px: container 1280px max-width, left-aligned, H1 96px, single-column.
+- Tablet 768px: container 100% width minus 48px gutters, left-aligned, H1 72px, hero padding 96px / 96px, dot grid scales proportionally.
+- Mobile 375px: container 100% width minus 24px gutters, left-aligned, H1 48px, hero padding 72px / 72px, dot grid spacing reduces to 6px cell, CTA row stacks vertically with 12px gap if buttons exceed the container width.
 
 QUALITY BAR
 
-- 8pt grid throughout the schematic surface (padding, layer heights, gaps, label offsets).
-- Per-section orange-accent cap respected (the orange outline + pulse dot count as the section's accent moments).
-- Hairlines at 1px or 2px only. No fills except the pulse dot.
-- Type-led hierarchy inside the schematic (size + weight + spatial separation, not color).
-- Cream surface #FAF8F1 used only here on the page — distinguishes the schematic from white card surfaces and dark navy-950 sections.
-- Single self-contained SVG inlined in the HTML. No external image asset. No JavaScript framework. No animation library.
-- Curly typographic apostrophes (U+2019) and em-dashes (U+2014) in any new label copy. Zero straight apostrophes.
+- 8pt grid throughout. Hero padding, internal gaps, and decoration all on the grid.
+- Per-section orange cap respected: the 32px rule + the cert chip dots + the primary CTA = 3 intentional touchpoints.
+- Hierarchy via type weight + size + spatial separation, NOT color saturation.
+- Curly typographic apostrophes (U+2019) and em-dashes (U+2014) throughout. Zero straight apostrophes.
+- Single self-contained HTML. No external image asset. No JavaScript framework. No animation library.
 
 DO NOT TOUCH
 
-- Hero left column (eyebrow, H1 "AI at the Core. Scale at Speed.", subline, two CTAs, four cert chips with orange dots) — unchanged.
 - Trust strip, Services, Tech Partners, Service Tabs, LeoRix AI section, Industries, Proof, Methodology, Resources, CTA Strip, Footer — unchanged.
-- The locked Variant B layout structure — unchanged.
+- The locked Variant B layout structure for non-hero sections — unchanged.
 - The button-states reference block in the desktop frame — unchanged.
-- Tablet and mobile breakpoint frames — only the schematic content within their respective heroes changes; the rest of each frame is unchanged.
+- Tablet and mobile breakpoint frames — only the hero content within their respective frames changes; the rest of each frame is unchanged.
 
 OUTPUT
 
-Surface the updated Production.html with the new hero schematic on the canvas for review. Annotate the schematic in the desktop frame with a small mono label below the surface: "← architecture schematic · static + single pulse on LeoRix node · respects prefers-reduced-motion". Apply the same schematic to tablet and mobile breakpoints, with the responsive behavior described above. Re-export when approved.
+Surface the updated Production.html with the new type-led hero across all three breakpoints. Re-export when approved. The hero will remain type-led until verified product details enable a real architecture artifact.
 ```
 
 ---

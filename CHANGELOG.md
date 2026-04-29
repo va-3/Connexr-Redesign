@@ -32,7 +32,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 - Split the landing-page artifact into two files for distinct audiences. The original `frontend/Production.html` is renamed to `frontend/Handover.html` (the engineering handoff spec — multi-state, multi-breakpoint, annotated). A new `frontend/Final-Desktop.html` is the clean stakeholder preview (single desktop view, no annotations, no state demos, no canvas chrome). README in `frontend/` updated to explain when to use each.
-- `docs/CLAUDE-DESIGN-PROMPTS.md` extended with two new paste-ready prompts: PROMPT 3 (Stakeholder Preview — single-desktop, marquee Trust strip, fully wired ARIA tablist) and PROMPT 4 (Hero Architecture Spin — replaces the funnel schematic with a five-layer operating-stack diagram on a cream surface, compliance envelope as structural element, single pulsing accent on the LeoRix node). Both keep the locked design tokens, zero-fabrication rules, and senior-FE quality bar.
+- `docs/CLAUDE-DESIGN-PROMPTS.md` extended with PROMPT 3 (Stakeholder Preview — single-desktop, marquee Trust strip, fully wired ARIA tablist).
+- `docs/CLAUDE-DESIGN-PROMPTS.md` PROMPT 4 (Hero Architecture Spin) was added and then **withdrawn within the same release cycle** — it baked in unverified assumptions about LeoRix's runtime structure (a five-layer INGEST → SUPPRESS → ENRICH → ACT → ATTEST stack with LeoRix doing root-cause inference and runbook selection). None of those layers, capabilities, or load-bearing roles were sourced from Connexr leadership. The zero-fabrication rule applies to product structure as strictly as it applies to client names and metrics. PROMPT 4 has been replaced with a type-led, single-column hero treatment that makes zero structural or product claims and uses only approved brand copy and real certifications. A real architecture artifact will be designed later when verified product details are available.
 
 ---
 
