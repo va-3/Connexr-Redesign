@@ -115,91 +115,90 @@ Don't ask about brand voice, color, type, anti-defaults, or buyer persona — th
 
 ---
 
-## PROMPT 2 — High-Fidelity Round
+## PROMPT 2 — High-Fidelity Round (Variant B locked, v3 — incorporates wireframe audit fixes)
 
-> Use AFTER picking the wireframe winner. Replace `[X]` with `A` or `B`.
+> Use AFTER reviewing the wireframe round. This version is locked to Variant B (the Editorial / asymmetric direction picked 2026-04-29) and bakes in the 8 fixes identified in the wireframe audit.
 
 ```
-Variant [X] from the wireframe round is the locked layout system. Now expand it to PRODUCTION-FIDELITY across all 13 sections.
+Variant B from the wireframe round is the locked production layout. The Connexr design system is attached. /docs/DESIGN-BRIEF.md is the canonical brief. Zero-fabrication rules from the wireframe round still apply.
 
-The Connexr design system is attached. /docs/DESIGN-BRIEF.md is the canonical brief. ZERO-FABRICATION rules from the wireframe round still apply — every placeholder remains explicitly labeled, no invented content sneaks back in.
+This is the production page. It must clear a 20-year senior frontend engineer's review on the first generation. One-shot, then I'll polish via Tweaks panel.
 
-Production-fidelity bar: this page must clear a 20-year senior frontend engineer's review on:
-- 8pt grid alignment (zero ad-hoc spacing)
-- Hierarchy via type weight + size + spatial separation, not color saturation
-- One accent moment per section maximum
-- Real asymmetry where the variant calls for it
-- Full state coverage on every interactive element (default / hover / focus-visible / active / disabled)
-- Em-dashes for parenthetical clauses, curly quotes throughout
-- Real responsive behavior visible at 3 breakpoints
-- No dead code in the JSX export
+LOCKED LAYOUT — carry forward from Variant B wireframe exactly:
+  Asymmetric 60/40 hero with funnel schematic (3 clusters × 6 nodes, thin orange lines, "fig. 01 — signal flow" + "triage · dedup · route" mono labels) → Mono-label single-row Trust strip with 6 placeholder cells → Sticky-head Services 4/8 split with 6 cards in 2-col right grid → Tech Partners single dense row with "Platform partners →" mono label → Vertical sidebar Service Tabs → Dark navy-950 LeoRix asymmetric panel → Featured + 5 supporting Industries grid → Sidebar + 4-stat Proof grid with NDA link → Horizontal 5-step Methodology rail → Single subscribe Resources block → Symmetric navy-950 CTA Strip → 5-col Footer.
 
-Build all 13 sections per the locked Variant [X] layout, with these production specifics:
+WIREFRAME FIXES — apply these exactly in this build:
+  1. Embed all design system tokens INLINE in the <style> block. Do NOT link to external tokens.css. Output must be a single self-contained HTML file with zero external dependencies. No Cloudflare scripts, no email-protection markup, no third-party services.
+  2. Subscribe input: render as a static input with "Email address" placeholder text in slate-500 italic. No <a> tags, no email-obfuscation markup. Just a plain styled input next to the orange Subscribe button.
+  3. Trust strip: change the "Selected enterprise engagements" eyebrow to neutral "Trusted by enterprise IT teams" — until real logos land, no claim of "engagements". Keep the 6 placeholder cells exactly.
+  4. LeoRix paragraph: replace the architectural claims with capability-only description. Exact copy: "Operator-grade reasoning for AIOps incident response. Available standalone or as part of a Managed AIOps engagement. Compliance posture inherits from your tenant. Specifications available on request." Keep the "Read the spec →" link and the orange accent bar.
+  5. Service Tabs "What's included" bullets: soften contract-implying phrases. Replace "We carry the pager" with "Embedded on-call rotation". Replace "Quarterly executive read-out" with "Quarterly engagement review". Maintain operator-credible tone but avoid contractual specificity.
+  6. Industries section: change "Featured industry" tag on Healthcare to plain "Industry". Remove the "Sector view →" link entirely. Keep the visual featuring (2fr column, span-2-rows) — that's a layout choice, not a content claim.
+  7. Curly typographic quotes/apostrophes throughout: don't → don't, you'll → you'll, etc. Em-dashes (—) for parentheticals. En-dashes (–) for ranges. Never straight apostrophes.
+  8. Orange accent discipline — per-section cap of THREE intentional touchpoints maximum. In hero specifically: keep cert dots + primary CTA + thin schematic lines. Drop orange node fill from right cluster — left, mid, AND right clusters all in navy. The orange in the hero is connector lines + CTA + dots, nothing else.
 
-1. NAV (sticky, 64px)
-   - Logo left (28px height) + 5 nav links (Services / Products / Industries / Insights / Company) + orange CTA right.
-   - Mobile drawer at ≤768px: hamburger icon → slide-in panel from right with the same 5 links + CTA, full-height, navy-950 background, white text. Tap-outside-to-close. Trap focus while open.
-   - Skip-to-content link as the FIRST focusable element of the page (visually hidden until focused, then orange chip top-left).
-   - Backdrop-blur (8px) when scrolled past 0; border-bottom 1px slate-200.
+PRODUCTION ADDITIONS — beyond the wireframe:
 
-2. HERO
-   - [Variant A: type-led, fully centered, no right-side visual.]
-   - [Variant B: 60/40 asymmetric. Right side is the schematic AIOps flow diagram from the wireframe — abstract shape relationships only, no numbers, no service names, no product UI.]
-   - 96px top padding desktop / 72px tablet / 48px mobile.
-   - H1 Title Case ("AI at the Core. Scale at Speed.") — DM Sans 700, 72px desktop / 56px tablet / 40px mobile, line-height 1.05, tracking -0.025em.
+RESPONSIVE — render three breakpoints in vertically stacked panels:
+  • Desktop 1440px — primary panel, all 13 sections, includes nav scrolled-with-blur state visible at top
+  • Tablet 768px — Services head stacks ABOVE cards (no longer sticky-side); LeoRix grid stacks vertically; method rail wraps 3 + 2 across two rows; partners row wraps 3 + 3; Industries collapses to 2-col with Healthcare still featured (full width); cert chips wrap; footer columns become 2-up
+  • Mobile 375px — single column throughout; method rail stacks vertically; schematic compresses to fit hero column at reduced node spacing; subscribe input full-width above the button (stacked); footer columns 1-up
+  No horizontal overflow at any width. No content reflow that creates layout shift.
 
-3. TRUST STRIP — 6 placeholder cells labeled "Client logo" (italic slate-500 mono 12px in a slate-200 outlined rectangle, 88px height). Single horizontal row at desktop, 3+3 at tablet, 2+2+2 at mobile.
+NAV — production:
+  • Sticky 64px, default state + scrolled-with-blur (8px) state both shown on desktop frame, separated by a small canvas annotation "← scrolled state"
+  • Skip-to-content link as FIRST focusable element of the page. Visually hidden by default (clip-path or sr-only), reveals as orange chip top-left when focused.
+  • Mobile drawer ≤768px: hamburger icon top-right → slide-in panel from right, full-height, navy-950 background, white nav links, white CTA, focus-trap when open. Render the OPEN state in the mobile frame.
 
-4. SERVICES OVERVIEW — 3×2 service card grid. Each card: 24×24 Lucide icon (navy) + h4 (24px DM Sans 600) + body (16px Plex Sans 400 slate-600) + "Read more →" link (14px Plex Sans 500 navy, underline-on-hover). 32px padding, 8px radius, 1px slate-200 border. Hover: border navy-200, shadow-md, no translate. Focus-visible: 2px orange ring.
+INTERACTION STATES — annotate with small mono labels next to elements ("← hover", "← focus-visible", "← active", "← disabled"):
+  • Primary CTA (orange): all 5 states — default / hover (orange-600) / focus-visible (2px orange-500 ring + 2px white inner ring) / active (-1px transform) / disabled (40% opacity, no cursor)
+  • Secondary CTA (navy ghost): default + hover (slate-100 bg) + focus-visible
+  • Ghost CTA: default + hover + focus-visible
+  • Service & Industry cards: default + hover (border slate-200 → navy-200, shadow-sm → shadow-md). NO translate, NO scale. Cursor pointer.
+  • Service Tabs sidebar: default tab + active tab (left border 2px orange-500, color navy-900, weight 600) + hover tab (color slate-500 → navy-700). Below the default Managed AIOps panel, show ONE alternate panel (AI Transformation) so reviewers see the tab swap.
+  • Subscribe input: default + focus-visible (2px orange-500 ring outside the bordered container)
 
-5. TECH PARTNERS — single row of 6, equal-width cards (1px slate-200 border, 8px radius, 16px vertical padding). Plain partner names in slate-600 DM Sans 600 16px. NO tier badges (until partner-tier confirmation lands). Mobile: 3+3 layout.
+TYPE RHYTHM — production polish (these are the senior-FE tells):
+  • Display sizes ≥48px: line-height 1.05, letter-spacing -0.025em
+  • H3 (32px): line-height 1.15, tracking -0.015em
+  • Body 16-18px: line-height 1.55, no tracking
+  • Caption 12-14px: line-height 1.4-1.5, tracking 0.02em
+  • Eyebrow 12px UPPERCASE: tracking 0.08em
+  • Hanging punctuation on bullet lists; baseline alignment of step numbers with step names; em-dash in mid-sentence is hair-spaced
 
-6. SERVICE TABS — 3 tabs (Managed AIOps default-active, AI Transformation, Cloud & Infrastructure). Tab bar: 1px slate-200 bottom border; active tab has orange-500 2px bottom border + navy-900 text. Tab content panel: 2-col grid (description left, capability bullets right). NO contract terms unless verified.
-   - Render the default state AND below it, render the AI Transformation tab's content as an alternate state.
+IMAGE / DECOR POLICY:
+  • No stock photos. No AI illustrations. No blob shapes. No gradient meshes. No 3D anything.
+  • Hero schematic preserved with the right-cluster orange→navy fix. Funnel topology intact: 6-6-6 nodes, thin orange connecting lines, faint cluster guides, mono labels.
+  • Decorative slots elsewhere = abstract geometric placeholders (a thin orange rule, a single small dot, a clean grid pattern). Already present in wireframe — preserve.
+  • Cert chips render as styled monochrome text chips (existing approach), never logo images.
+  • Trust strip = 6 placeholder cells. No text wordmarks, no fake company names.
 
-7. LEORIX AI — dedicated dark navy-950 section. Eyebrow + h2 ("LeoRix AI. Operator-grade reasoning for AIOps.") + lead paragraph describing the agent (correlation, runbook attachment, safe remediation, clean handoff). Two CTAs (See it triage primary / Read the spec ghost). Right column: a SINGLE paragraph reinforcing what LeoRix does + a "Read the spec →" link. NO stats grid. NO fabricated metrics. NO fake product screenshot.
+QUALITY BAR (must clear in one shot):
+  • Every spacing value on the 8pt grid (4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 160). No 13px, no 21px.
+  • Border radii from {0, 4, 8, 12} only. No pills.
+  • Hierarchy via type weight + size + spatial separation, NOT color saturation.
+  • Per-section orange cap: 3 intentional touchpoints maximum.
+  • Body contrast ≥ 4.5:1 on every surface. White-on-navy-950 contrast ≥ 7:1.
+  • All copy uses curly typographic quotes and em-dashes. Zero straight apostrophes.
+  • JSX export contains only rendered components. No dead code, no unused functions.
+  • All buttons render with their full state set as specified.
 
-8. INDUSTRIES — 6-card grid using Lucide icons (heart / coins / factory / umbrella / cart / server). Each card: icon + name + 1-line capability caption (capabilities, not metrics). Hover: bg-50 surface change.
+ZERO-FABRICATION — non-negotiable, carries from wireframe:
+  • No invented client names, metrics, testimonials, product UI, article titles, or architectural claims about LeoRix.
+  • All placeholders italicized slate-500 with "(pending)" or "— pending" suffix where applicable.
+  • Industry captions = capabilities only, max 6 words each.
+  • Methodology one-liners describe PROCESS, not outcomes.
+  • Service descriptions = capabilities, no contract-implying language unless explicitly verified.
 
-9. PROOF — section header + EITHER 4 placeholder stat boxes labeled in italic slate-500 ("Uptime SLA — pending" / "Engagements — pending" / "MTTR reduction — pending" / "Engineer-hours saved — pending") OR a simpler treatment of just cert chips + "Case study available under NDA — request access →" link. Default to the simpler version unless the variant explicitly calls for placeholders. NO Mara Chen, NO fictional case study, NO invented numbers anywhere.
+OUTPUT:
+  • One scrollable canvas. Three labeled panels stacked top-to-bottom: Desktop 1440 / Tablet 768 / Mobile 375.
+  • Each breakpoint renders all 13 sections.
+  • Interaction-state annotations on the desktop frame (small mono labels).
+  • All design system tokens embedded inline. Single self-contained HTML file.
 
-10. METHODOLOGY (Why Connexr) — 5 step blocks (Discover → Architect → Build → Deploy → Optimize) with numbered circle (orange-500 mono numeral on navy-900 fill, 32px), step name (24px DM Sans 600), 1-line process description (16px Plex Sans 400 slate-600). Connecting line between steps (1px slate-300, with orange-500 break point at the active step if any). Mobile: stacked vertical with vertical connecting line on the left.
+When uncertainty exists, prefer the more conservative interpretation aligned with the locked wireframe. If a reference would push the design outside the locked tokens, surface the conflict before generating — do not break the system.
 
-11. RESOURCES — 1 featured (2/3 width) + 2 supporting (1/3 width stacked). Image area uses navy-900 → navy-950 gradient panel (no fake screenshot). Tag (Featured / Field note / Reference) eyebrow style. Title in italic slate-500 "Title pending." (every article uses placeholder). Meta in slate-500 ("Date pending"). Hover: border navy-200, shadow-md.
-
-12. CTA STRIP — full-width navy-950 panel, 80px section padding. H2 ("Ready to run AI-native operations in production?") + primary orange CTA right. Asymmetric horizontal layout at desktop; stacks at ≤720px.
-
-13. FOOTER — 5-column grid (1.4fr / 1fr × 4): brand block + Services + Products + Industries + Company. White-logo variant. Bottom strip: copyright left + cert chips right, 1px white-10% top border. Each column header: 13px UPPERCASE eyebrow (white).
-
-RESPONSIVE OUTPUT:
-- Render desktop (1440px), tablet (768px), and mobile (375px) versions in three labeled panels at the bottom of the canvas.
-- Mobile nav drawer present and visible (open state in one of the mobile frames).
-- All grids collapse cleanly at the documented breakpoints.
-- No horizontal overflow at any width.
-
-INTERACTION STATES (mandatory annotations on canvas):
-- Buttons: hover state + focus-visible state, marked with small "← hover" / "← focus-visible" indicators.
-- Cards: render one card per grid in hover state.
-- Service tabs: default state + alternate-tab state both visible.
-- Nav: default state + scrolled-with-blur state both visible.
-
-IMAGE POLICY:
-- No stock photos. No AI illustrations. No blob shapes. No gradient meshes.
-- Decorative slots = abstract geometric placeholders (a thin orange rule, a single small dot, a clean grid pattern).
-- Hero's right-side visual (Variant B only) follows the schematic-flow rule from the wireframe.
-- Cert chips in Hero AND Proof render as styled monochrome text chips (not logo images — licensing).
-- Trust strip is the ONLY place where real logo images would eventually live; until then, placeholder cells.
-
-ZERO-FABRICATION RULES (still non-negotiable):
-- No invented client names, metrics, testimonials, product screenshots, or article titles.
-- All placeholders italicized in slate-500 with "(pending)" or "— pending" suffix.
-- Industry captions are CAPABILITIES, not metrics.
-- Methodology one-liners describe PROCESS, not outcomes.
-- Service deep-dive bullets describe CAPABILITIES, not contract terms unless verified.
-
-NO DEAD CODE in the JSX export. Every component defined must be rendered. If a component is no longer used, remove it from the source.
-
-Generate the full page in one continuous canvas at desktop fidelity, with the 3 breakpoint reference frames at the bottom. Surface the canvas for review before export.
+Generate the production page in one continuous canvas with the 3 breakpoint panels. Surface for review before export.
 ```
 
 ---
