@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Connexr — Landing wireframe (Variant B · Editorial)</title>
+<meta name="viewport" content="width=1480" />
+<link rel="stylesheet" href="../tokens.css" />
+<style>
+  /* =========================================================
+     Wireframe canvas chrome
+     ========================================================= */
+  html, body { background: #EEF1F6; }
+  body {
+    margin: 0;
+    padding: 48px 0 96px;
+    color: var(--fg);
+    font-family: var(--font-body);
+  }
+  .canvas {
+    width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+  .panel-label {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0 8px 12px;
+    border-bottom: 1px solid var(--slate-300);
+    margin-bottom: 16px;
+  }
+  .panel-label .tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--slate-500);
+    letter-spacing: 0.04em;
+  }
+  .panel-label h1 {
+    font: 700 24px/1.2 var(--font-display);
+    letter-spacing: -0.01em;
+    color: var(--navy-900);
+    margin: 0;
+  }
+  .panel {
+    width: 1440px;
+    background: var(--white);
+    border: 1px solid var(--slate-300);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+
+  /* =========================================================
+     Shared section primitives (panel-scoped via .panel)
+     ========================================================= */
+  .panel section { padding-left: 80px; padding-right: 80px; }
+  .panel section.full-bleed { padding-left: 0; padding-right: 0; }
+  .panel .section-pad-y { padding-top: 96px; padding-bottom: 96px; }
+
+  .eyebrow {
+    font: 500 12px/1.2 var(--font-body);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--slate-500);
+  }
+  .lead { font: 400 18px/1.55 var(--font-body); color: var(--navy-950); }
+  .placeholder {
+    font-family: var(--font-body);
+    font-style: italic;
+    color: var(--slate-500);
+  }
+  .placeholder-mono {
+    font-family: var(--font-mono);
+    font-style: italic;
+    color: var(--slate-500);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  /* CTAs */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font: 500 14px/1 var(--font-body);
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: default;
+  }
+  .btn-primary {
+    background: var(--orange-500);
+    color: #fff;
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--navy-900);
+    border-color: var(--slate-300);
+  }
+  .btn-ghost-dark {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255,255,255,0.32);
+  }
+
+  /* Cert chips */
+  .cert-row {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .cert-chip {
+    font: 500 12px/1 var(--font-body);
+    letter-spacing: 0.04em;
+    color: var(--navy-900);
+    border: 1px solid var(--slate-300);
+    border-radius: 4px;
+    padding: 8px 12px;
+    background: #fff;
+  }
+  .cert-chip.dot::before {
+    content: "";
+    display: inline-block;
+    width: 6px; height: 6px;
+    margin-right: 8px;
+    border-radius: 9999px;
+    background: var(--orange-500);
+    transform: translateY(-1px);
+    vertical-align: middle;
+  }
+
+  /* Nav */
+  .wf-nav {
+    height: 64px;
+    border-bottom: 1px solid var(--slate-200);
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+    background: rgba(255,255,255,0.92);
+  }
+  .wf-nav .logo {
+    height: 28px;
+  }
+  .wf-nav ul {
+    list-style: none;
+    margin: 0 0 0 64px;
+    padding: 0;
+    display: flex;
+    gap: 32px;
+  }
+  .wf-nav li {
+    font: 500 14px/1 var(--font-body);
+    color: var(--navy-900);
+  }
+  .wf-nav .right { margin-left: auto; display: flex; align-items: center; gap: 24px; }
+
+  /* Trust strip placeholder cells */
+  .trust-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+  }
+  .logo-placeholder {
+    height: 64px;
+    border: 1px solid var(--slate-200);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+  }
+
+  /* Service / Industry / Generic card */
+  .card {
+    background: #fff;
+    border: 1px solid var(--slate-200);
+    border-radius: 8px;
+    padding: 32px;
+  }
+  .card h4 {
+    font: 600 24px/1.15 var(--font-display);
+    color: var(--navy-900);
+    margin: 0 0 12px;
+  }
+  .card p {
+    font: 400 16px/1.55 var(--font-body);
+    color: var(--slate-600);
+    margin: 0;
+  }
+  .card .tag {
+    font: 500 12px/1 var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--slate-500);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  /* Tabs (Service Tabs) */
+  .tabs-nav {
+    display: flex;
+    border-bottom: 1px solid var(--slate-200);
+  }
+  .tabs-nav .tab {
+    padding: 16px 24px;
+    font: 500 14px/1 var(--font-body);
+    color: var(--slate-500);
+    border-bottom: 2px solid transparent;
+  }
+  .tabs-nav .tab.active {
+    color: var(--navy-900);
+    border-bottom-color: var(--orange-500);
+  }
+
+  /* LeoRix dark panel */
+  .dark-panel {
+    background: #0F1629;
+    color: rgba(255,255,255,0.92);
+  }
+  .dark-panel .eyebrow { color: rgba(255,255,255,0.56); }
+  .dark-panel h2 {
+    font: 700 48px/1.1 var(--font-display);
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin: 0;
+  }
+  .dark-panel a.read { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 2px; font: 500 14px/1 var(--font-body);}
+
+  /* Footer */
+  .wf-footer {
+    background: #0F1629;
+    color: rgba(255,255,255,0.8);
+    padding: 64px 80px 48px;
+  }
+  .wf-footer h5 {
+    font: 600 14px/1 var(--font-body);
+    color: #fff;
+    margin: 0 0 16px;
+    letter-spacing: 0.02em;
+  }
+  .wf-footer ul { list-style: none; padding: 0; margin: 0; }
+  .wf-footer li {
+    font: 400 14px/2 var(--font-body);
+    color: rgba(255,255,255,0.64);
+  }
+
+  /* Tiny utilities */
+  .row { display: flex; }
+  .col { display: flex; flex-direction: column; }
+  .gap-2 { gap: 8px; } .gap-3 { gap: 12px; } .gap-4 { gap: 16px; }
+  .gap-6 { gap: 24px; } .gap-8 { gap: 32px; } .gap-12 { gap: 48px; } .gap-16 { gap: 64px; }
+  .center { align-items: center; justify-content: center; }
+  .between { justify-content: space-between; }
+  .text-center { text-align: center; }
+  .text-mono { font-family: var(--font-mono); }
+  .accent-bar {
+    width: 32px;
+    height: 2px;
+    background: var(--orange-500);
+    display: block;
+  }
+
+  h2.section-h2 {
+    font: 700 48px/1.1 var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--navy-900);
+    margin: 0;
+  }
+  h2.section-h2-sm {
+    font: 700 32px/1.15 var(--font-display);
+    letter-spacing: -0.015em;
+    color: var(--navy-900);
+    margin: 0;
+  }
+
+  /* =========================================================
+     VARIANT B — Editorial · asymmetric · dense
+     ========================================================= */
+  .variant-b { color: var(--navy-950); }
+  .variant-b section { padding-left: 64px; padding-right: 64px; }
+  .variant-b .section-pad-y { padding-top: 96px; padding-bottom: 96px; }
+  .variant-b .container { max-width: 1312px; margin: 0 auto; }
+
+  /* B: Hero — 60/40 asymmetric, schematic right */
+  .variant-b .hero {
+    padding-top: 96px;
+    padding-bottom: 96px;
+    border-bottom: 1px solid var(--slate-200);
+  }
+  .variant-b .hero-grid {
+    display: grid;
+    grid-template-columns: 60fr 40fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .variant-b .hero h1 {
+    font: 700 72px/1.02 var(--font-display);
+    letter-spacing: -0.03em;
+    color: var(--navy-900);
+    margin: 24px 0 0;
+  }
+  .variant-b .hero .subline {
+    font: 400 18px/1.55 var(--font-body);
+    color: var(--navy-950);
+    margin: 24px 0 0;
+    max-width: 560px;
+  }
+  .variant-b .hero .ctas { margin-top: 32px; display: flex; gap: 16px; }
+  .variant-b .hero .certs { margin-top: 32px; display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* B: schematic */
+  .schematic {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border: 1px solid var(--slate-200);
+    border-radius: 12px;
+    background:
+      linear-gradient(to right, rgba(226,232,240,0.4) 1px, transparent 1px) 0 0/64px 100%,
+      #FBFCFE;
+    position: relative;
+  }
+  .schematic .meta {
+    position: absolute;
+    top: 16px; left: 16px;
+    font: 400 12px/1 var(--font-mono);
+    color: var(--slate-500);
+    letter-spacing: 0.04em;
+  }
+  .schematic .scale {
+    position: absolute;
+    bottom: 16px; right: 16px;
+    font: 400 12px/1 var(--font-mono);
+    color: var(--slate-500);
+    letter-spacing: 0.04em;
+  }
+
+  /* B: Trust strip — inline mono header with row */
+  .variant-b .trust { padding-top: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--slate-200); }
+  .variant-b .trust-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .variant-b .trust .label {
+    font: 500 12px/1.4 var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--slate-500);
+  }
+
+  /* B: Services — asymmetric 6-card grid (4+8 split) */
+  .variant-b .services-grid {
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+    gap: 64px;
+  }
+  .variant-b .services-grid .head { position: sticky; top: 24px; }
+  .variant-b .services-grid .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* B: Tech partners — single row, mono labels, hairline cells */
+  .variant-b .partners {
+    border-top: 1px solid var(--slate-200);
+    border-bottom: 1px solid var(--slate-200);
+    padding-top: 48px; padding-bottom: 48px;
+    margin-top: 96px; margin-bottom: 0;
+  }
+  .variant-b .partners-grid {
+    display: grid;
+    grid-template-columns: 200px repeat(6, 1fr);
+    gap: 24px;
+    align-items: center;
+  }
+  .variant-b .partners-grid .label {
+    font: 500 12px/1.4 var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--slate-500);
+  }
+  .variant-b .partners-grid .cell {
+    font: 500 14px/1 var(--font-body);
+    color: var(--navy-900);
+    padding: 16px 0;
+    border-left: 1px solid var(--slate-200);
+    padding-left: 16px;
+  }
+
+  /* B: Service tabs — vertical sidebar tabs */
+  .variant-b .tabs-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+  }
+  .variant-b .tabs-side { display: flex; flex-direction: column; }
+  .variant-b .tabs-side .tab {
+    padding: 16px 0 16px 16px;
+    border-left: 2px solid transparent;
+    font: 500 16px/1.3 var(--font-body);
+    color: var(--slate-500);
+  }
+  .variant-b .tabs-side .tab.active {
+    color: var(--navy-900);
+    border-left-color: var(--orange-500);
+    font-weight: 600;
+  }
+  .variant-b .tab-panel {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+  }
+
+  /* B: LeoRix — inset dark band with paragraph + spec link */
+  .variant-b .leorix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 64px;
+    padding: 96px 64px;
+  }
+
+  /* B: Industries — featured + 5 supporting (mixed) */
+  .variant-b .industries-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-auto-rows: minmax(200px, auto);
+    gap: 16px;
+  }
+  .variant-b .industries-grid .feature {
+    grid-column: 1; grid-row: 1 / span 2;
+    background: var(--bg-50);
+  }
+
+  /* B: Proof — sidebar + stats */
+  .variant-b .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .variant-b .proof-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--slate-200);
+    border-left: 1px solid var(--slate-200);
+  }
+  .variant-b .proof-stat {
+    padding: 24px;
+    border-right: 1px solid var(--slate-200);
+    border-bottom: 1px solid var(--slate-200);
+  }
+  .variant-b .proof-stat .label {
+    font: 500 12px/1.2 var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--slate-500);
+    margin-bottom: 12px;
+  }
+  .variant-b .proof-stat .value {
+    font: 700 24px/1.15 var(--font-display);
+    color: var(--navy-900);
+  }
+  .variant-b .proof-stat .value.placeholder {
+    font-weight: 400;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--slate-500);
+    font-style: italic;
+  }
+
+  /* B: Methodology — horizontal 5-step rail */
+  .variant-b .method-rail {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--slate-200);
+  }
+  .variant-b .method-rail .step {
+    padding: 32px 24px 32px 24px;
+    border-right: 1px solid var(--slate-200);
+    position: relative;
+  }
+  .variant-b .method-rail .step:last-child { border-right: 0; }
+  .variant-b .method-rail .step .num {
+    font: 500 12px/1 var(--font-mono);
+    color: var(--orange-500);
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .variant-b .method-rail .step .name {
+    font: 600 18px/1.2 var(--font-display);
+    color: var(--navy-900);
+    margin-bottom: 12px;
+  }
+  .variant-b .method-rail .step .desc {
+    font: 400 14px/1.55 var(--font-body);
+    color: var(--slate-600);
+  }
+
+  /* B: Resources — single placeholder */
+  .variant-b .resources-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    border: 1px solid var(--slate-200);
+    border-radius: 12px;
+    padding: 48px;
+  }
+
+  /* B: CTA strip (symmetric) */
+  .variant-b .cta-strip {
+    background: var(--navy-950);
+    color: #fff;
+    text-align: center;
+    padding: 96px;
+  }
+  .variant-b .cta-strip h2 { color: #fff; margin: 0 auto; max-width: 720px; }
+  .variant-b .cta-strip .ctas { margin-top: 32px; display: inline-flex; gap: 16px; }
+
+  /* Footer */
+  .wf-footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+  .wf-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 32px;
+    font: 400 12px/1.4 var(--font-body);
+    color: rgba(255,255,255,0.48);
+  }
+  .wf-footer .logo {
+    height: 32px;
+    margin-bottom: 24px;
+  }
+
+  /* Annotations (dotted hairlines around sections to call out structure) */
+  .anno {
+    position: relative;
+  }
+  .anno::before {
+    content: attr(data-anno);
+    position: absolute;
+    top: 8px; left: 12px;
+    font: 400 11px/1 var(--font-mono);
+    letter-spacing: 0.04em;
+    color: var(--slate-400);
+    background: rgba(255,255,255,0.85);
+    padding: 4px 6px;
+    border-radius: 2px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Section divider helper */
+  .panel section + section { border-top: 1px solid var(--slate-200); }
+  .panel section + section.dark-panel,
+  .panel .dark-panel + section,
+  .panel section + section.cta-strip,
+  .panel .cta-strip + section { border-top: 0; }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <!-- ============================================================
+       PANEL HEADER B
+       ============================================================ -->
+  <div>
+    <div class="panel-label">
+      <h1>Variant B — Editorial</h1>
+      <span class="tag">ASYMMETRIC · DENSE · 1440PX · 13 SECTIONS</span>
+    </div>
+
+    <div class="panel variant-b" data-screen-label="Variant B — Editorial">
+
+      <!-- 1. Nav -->
+      <section class="wf-nav full-bleed anno" data-screen-label="B · 01 Nav" data-anno="01 · NAV">
+        <img class="logo" src="../assets/connexr-logo.png" alt="Connexr" />
+        <ul>
+          <li>Services</li>
+          <li>Products</li>
+          <li>Industries</li>
+          <li>Insights</li>
+          <li>Company</li>
+        </ul>
+        <div class="right">
+          <span style="font: 500 14px/1 var(--font-body); color: var(--navy-900);">Sign in</span>
+          <span class="btn btn-primary">Book a demo</span>
+        </div>
+      </section>
+
+      <!-- 2. Hero — 60/40 asymmetric, schematic right -->
+      <section class="hero anno" data-screen-label="B · 02 Hero" data-anno="02 · HERO — 60/40 asymmetric, schematic right">
+        <div class="container">
+          <div class="hero-grid">
+            <div>
+              <span class="eyebrow">AIOps · Managed Services</span>
+              <h1>AI at the Core. Scale at Speed.</h1>
+              <p class="subline">We run AI-native operations for enterprise IT — eliminating alert fatigue, automating incident response, and giving your team back the hours.</p>
+              <div class="ctas">
+                <span class="btn btn-primary">Book a demo</span>
+                <span class="btn btn-secondary">Explore the platform →</span>
+              </div>
+              <div class="certs">
+                <span class="cert-chip dot">SOC 2 Type II</span>
+                <span class="cert-chip dot">HIPAA</span>
+                <span class="cert-chip dot">ISO 27001</span>
+                <span class="cert-chip dot">GDPR</span>
+              </div>
+            </div>
+            <div>
+              <div class="schematic" id="schematic-b">
+                <span class="meta">fig. 01 — signal flow</span>
+                <span class="scale">triage · dedup · route</span>
+                <svg viewBox="0 0 480 360" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                  <defs>
+                    <style>
+                      .node { fill: #122560; }
+                      .node-mid { fill: #122560; }
+                      .node-out { fill: #F27A1A; }
+                      .line { stroke: #F27A1A; stroke-width: 1; fill: none; opacity: 0.55; }
+                      .frame { stroke: #E2E8F0; stroke-width: 1; fill: none; }
+                    </style>
+                  </defs>
+                  <!-- Funnel: 6 wide nodes (left col) -> 6 mid nodes -> 6 right nodes (compact) -->
+                  <!-- Cluster guides (very faint) -->
+                  <rect x="32" y="40" width="80" height="280" class="frame" />
+                  <rect x="200" y="100" width="80" height="160" class="frame" />
+                  <rect x="368" y="140" width="64" height="80" class="frame" />
+
+                  <!-- Wide cluster (left) — 6 nodes spread vertically -->
+                  <circle cx="72" cy="60"  r="4" class="node" />
+                  <circle cx="72" cy="112" r="4" class="node" />
+                  <circle cx="72" cy="160" r="4" class="node" />
+                  <circle cx="72" cy="208" r="4" class="node" />
+                  <circle cx="72" cy="252" r="4" class="node" />
+                  <circle cx="72" cy="304" r="4" class="node" />
+
+                  <!-- Mid cluster — 6 nodes denser -->
+                  <circle cx="240" cy="118" r="4" class="node-mid" />
+                  <circle cx="240" cy="148" r="4" class="node-mid" />
+                  <circle cx="240" cy="178" r="4" class="node-mid" />
+                  <circle cx="240" cy="208" r="4" class="node-mid" />
+                  <circle cx="240" cy="238" r="4" class="node-mid" />
+                  <circle cx="240" cy="268" r="4" class="node-mid" />
+
+                  <!-- Right cluster — 6 nodes very compact (exit) -->
+                  <circle cx="400" cy="158" r="4" class="node-out" />
+                  <circle cx="400" cy="170" r="4" class="node-out" />
+                  <circle cx="400" cy="182" r="4" class="node-out" />
+                  <circle cx="400" cy="194" r="4" class="node-out" />
+                  <circle cx="400" cy="206" r="4" class="node-out" />
+                  <circle cx="400" cy="218" r="4" class="node-out" />
+
+                  <!-- Lines: every left node fans into mid cluster -->
+                  <g>
+                    <line x1="72" y1="60"  x2="240" y2="118" class="line" />
+                    <line x1="72" y1="60"  x2="240" y2="178" class="line" />
+                    <line x1="72" y1="112" x2="240" y2="118" class="line" />
+                    <line x1="72" y1="112" x2="240" y2="148" class="line" />
+                    <line x1="72" y1="112" x2="240" y2="208" class="line" />
+                    <line x1="72" y1="160" x2="240" y2="148" class="line" />
+                    <line x1="72" y1="160" x2="240" y2="178" class="line" />
+                    <line x1="72" y1="160" x2="240" y2="208" class="line" />
+                    <line x1="72" y1="208" x2="240" y2="178" class="line" />
+                    <line x1="72" y1="208" x2="240" y2="208" class="line" />
+                    <line x1="72" y1="208" x2="240" y2="238" class="line" />
+                    <line x1="72" y1="252" x2="240" y2="208" class="line" />
+                    <line x1="72" y1="252" x2="240" y2="238" class="line" />
+                    <line x1="72" y1="252" x2="240" y2="268" class="line" />
+                    <line x1="72" y1="304" x2="240" y2="238" class="line" />
+                    <line x1="72" y1="304" x2="240" y2="268" class="line" />
+                  </g>
+                  <!-- Mid -> right (denser convergence) -->
+                  <g>
+                    <line x1="240" y1="118" x2="400" y2="158" class="line" />
+                    <line x1="240" y1="118" x2="400" y2="170" class="line" />
+                    <line x1="240" y1="148" x2="400" y2="170" class="line" />
+                    <line x1="240" y1="148" x2="400" y2="182" class="line" />
+                    <line x1="240" y1="178" x2="400" y2="182" class="line" />
+                    <line x1="240" y1="178" x2="400" y2="194" class="line" />
+                    <line x1="240" y1="208" x2="400" y2="194" class="line" />
+                    <line x1="240" y1="208" x2="400" y2="206" class="line" />
+                    <line x1="240" y1="238" x2="400" y2="206" class="line" />
+                    <line x1="240" y1="238" x2="400" y2="218" class="line" />
+                    <line x1="240" y1="268" x2="400" y2="218" class="line" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Trust strip -->
+      <section class="trust anno" data-screen-label="B · 03 Trust strip" data-anno="03 · TRUST STRIP">
+        <div class="container">
+          <div class="trust-grid">
+            <span class="label">Selected enterprise<br/>engagements →</span>
+            <div class="trust-row">
+              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Services — asymmetric 4/8 split -->
+      <section class="section-pad-y anno" data-screen-label="B · 04 Services" data-anno="04 · SERVICES — sticky head left, 6 cards 2-col right">
+        <div class="container">
+          <div class="services-grid">
+            <div class="head">
+              <span class="eyebrow">Services</span>
+              <h2 class="section-h2" style="margin-top: 16px;">Six practices.<br/>One operating model.</h2>
+              <p class="lead" style="margin-top: 24px; color: var(--slate-600);">Every engagement runs the same instrumented playbook — discover, architect, build, deploy, optimize. Practice areas determine team and stack.</p>
+              <div style="margin-top: 32px;">
+                <span class="btn btn-secondary">Browse all services →</span>
+              </div>
+            </div>
+            <div class="cards">
+              <div class="card">
+                <h4>Managed AIOps</h4>
+                <p>Alert correlation, incident response, runbook automation — operated 24×7.</p>
+              </div>
+              <div class="card">
+                <h4>AI Transformation</h4>
+                <p>Production AI systems — model lifecycle, evals, governance, platform plumbing.</p>
+              </div>
+              <div class="card">
+                <h4>Cloud &amp; Infrastructure</h4>
+                <p>Multi-cloud landing zones, FinOps, platform engineering, migration with rollback plans.</p>
+              </div>
+              <div class="card">
+                <h4>Enterprise Security</h4>
+                <p>Compliance posture, identity, detection engineering, continuous controls monitoring.</p>
+              </div>
+              <div class="card">
+                <h4>Data &amp; Analytics</h4>
+                <p>Data platforms, lineage, semantic layer, analytics surfaces business owners use.</p>
+              </div>
+              <div class="card">
+                <h4>Digital Strategy</h4>
+                <p>Operating-model design, target architecture, sequenced roadmap your CFO will sign.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Tech partners — single dense row -->
+      <section class="partners full-bleed anno" data-screen-label="B · 05 Tech partners" data-anno="05 · TECH PARTNERS — single dense row, mono label">
+        <div class="container" style="padding: 0 64px;">
+          <div class="partners-grid">
+            <span class="label">Platform partners →</span>
+            <span class="cell">AWS</span>
+            <span class="cell">Azure</span>
+            <span class="cell">GCP</span>
+            <span class="cell">ServiceNow</span>
+            <span class="cell">Datadog</span>
+            <span class="cell">Microsoft 365</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Service tabs — vertical sidebar -->
+      <section class="section-pad-y anno" data-screen-label="B · 06 Service tabs" data-anno="06 · SERVICE TABS — vertical sidebar">
+        <div class="container">
+          <div style="margin-bottom: 64px;">
+            <span class="eyebrow">Deep-dive</span>
+            <h2 class="section-h2" style="margin-top: 16px;">Pick a practice. See how we run it.</h2>
+          </div>
+          <div class="tabs-grid">
+            <div class="tabs-side">
+              <span class="tab active">Managed AIOps</span>
+              <span class="tab">AI Transformation</span>
+              <span class="tab">Cloud &amp; Infrastructure</span>
+            </div>
+            <div class="tab-panel">
+              <div>
+                <h3 style="font: 700 32px/1.15 var(--font-display); color: var(--navy-900); margin: 0 0 16px;">A 24×7 ops capability you don't have to staff.</h3>
+                <p style="color: var(--slate-600); margin: 0 0 24px; max-width: 560px;">Connexr engineers operate alert correlation, incident response, and runbook automation against your existing observability stack — no rip-and-replace, no parallel control plane.</p>
+                <p style="color: var(--slate-600); margin: 0; max-width: 560px;">Quarterly read-outs cover MTTR, change-failure rate, alert volume, and unit cost.</p>
+                <div style="margin-top: 32px;">
+                  <a href="#" style="font: 500 14px/1 var(--font-body); color: var(--navy-900); border-bottom: 1px solid var(--orange-500); padding-bottom: 4px;">See the playbook →</a>
+                </div>
+              </div>
+              <div>
+                <p class="eyebrow" style="margin-bottom: 16px;">What's included</p>
+                <ul style="margin: 0; padding-left: 20px; color: var(--slate-600); font: 400 14px/1.85 var(--font-body);">
+                  <li>Alert correlation &amp; deduplication</li>
+                  <li>P1–P3 incident triage and response</li>
+                  <li>Runbook authoring and automation</li>
+                  <li>On-call rotation — we carry the pager</li>
+                  <li>Evidence trail for audit and post-mortem</li>
+                  <li>Quarterly executive read-out</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. LeoRix AI — dark, asymmetric -->
+      <section class="dark-panel full-bleed anno" data-screen-label="B · 07 LeoRix AI" data-anno="07 · LEORIX AI — dark, asymmetric, paragraph + spec link">
+        <div class="leorix-grid">
+          <div>
+            <span class="eyebrow">Flagship product</span>
+            <h2 style="margin-top: 16px;">LeoRix AI</h2>
+            <div class="accent-bar" style="margin-top: 32px;"></div>
+          </div>
+          <div>
+            <p style="font: 400 18px/1.65 var(--font-body); color: rgba(255,255,255,0.84); margin: 0; max-width: 640px;">LeoRix AI is the agent layer beneath Connexr Managed AIOps. It correlates alerts across your observability stack, proposes a root cause with the evidence trail, and executes runbooks under a human-approval gate — so on-call hours stop being a tax on your platform team.</p>
+            <p style="font: 400 16px/1.65 var(--font-body); color: rgba(255,255,255,0.64); margin: 24px 0 0; max-width: 640px;">Available standalone or operated as part of a Managed AIOps engagement. Compliance posture inherits from your tenant.</p>
+            <div style="margin-top: 32px;">
+              <a class="read" href="#">Read the spec →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Industries — featured + 5 -->
+      <section class="section-pad-y anno" data-screen-label="B · 08 Industries" data-anno="08 · INDUSTRIES — featured + 5 supporting (mixed)">
+        <div class="container">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 48px;">
+            <div>
+              <span class="eyebrow">Industries</span>
+              <h2 class="section-h2" style="margin-top: 16px;">Where we operate.</h2>
+            </div>
+            <p class="lead" style="color: var(--slate-600); margin: 0; max-width: 480px; justify-self: end;">Industry depth determines the reference architecture, the compliance posture, and the on-call playbook we hand your team.</p>
+          </div>
+          <div class="industries-grid">
+            <div class="card feature" style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <span class="tag">Featured industry</span>
+                <h4 style="font-size: 32px;">Healthcare</h4>
+                <p style="font-size: 18px; color: var(--slate-600);">HIPAA-eligible deployments.</p>
+              </div>
+              <div style="margin-top: 48px;">
+                <a href="#" style="font: 500 14px/1 var(--font-body); color: var(--navy-900); border-bottom: 1px solid var(--orange-500); padding-bottom: 4px;">Sector view →</a>
+              </div>
+            </div>
+            <div class="card">
+              <span class="tag">Industry</span>
+              <h4>FinTech</h4>
+              <p>Latency- and audit-bound systems.</p>
+            </div>
+            <div class="card">
+              <span class="tag">Industry</span>
+              <h4>Manufacturing</h4>
+              <p>OT/IT convergence.</p>
+            </div>
+            <div class="card">
+              <span class="tag">Industry</span>
+              <h4>Insurance</h4>
+              <p>Claims, underwriting, fraud.</p>
+            </div>
+            <div class="card">
+              <span class="tag">Industry</span>
+              <h4>Retail</h4>
+              <p>Peak readiness, omni-stack.</p>
+            </div>
+            <div class="card" style="grid-column: 2 / span 2;">
+              <span class="tag">Industry</span>
+              <h4>AIOps &amp; IT Ops</h4>
+              <p>Greenfield + brownfield.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. Proof — sidebar + 4 stats grid + cert -->
+      <section class="section-pad-y anno" style="background: var(--bg-50);" data-screen-label="B · 09 Proof" data-anno="09 · PROOF — sidebar lead + stat grid + NDA">
+        <div class="container">
+          <div class="proof-grid">
+            <div>
+              <span class="eyebrow">Proof</span>
+              <h2 class="section-h2" style="margin-top: 16px;">Operator-grade,<br/>audit-grade.</h2>
+              <p class="lead" style="margin-top: 24px; color: var(--slate-600); max-width: 360px;">Numbers under NDA — request the case study and we'll walk through engagements that match your stack and posture.</p>
+              <div style="margin-top: 32px;">
+                <a href="#" style="font: 500 14px/1 var(--font-body); color: var(--navy-900); border-bottom: 1px solid var(--orange-500); padding-bottom: 4px;">Request access →</a>
+              </div>
+              <div class="cert-row" style="margin-top: 48px;">
+                <span class="cert-chip">SOC 2 Type II</span>
+                <span class="cert-chip">HIPAA</span>
+                <span class="cert-chip">ISO 27001</span>
+                <span class="cert-chip">GDPR</span>
+              </div>
+            </div>
+            <div class="proof-stats">
+              <div class="proof-stat">
+                <div class="label">Uptime SLA</div>
+                <div class="value placeholder">Pending</div>
+              </div>
+              <div class="proof-stat">
+                <div class="label">Engagements</div>
+                <div class="value placeholder">Pending</div>
+              </div>
+              <div class="proof-stat">
+                <div class="label">MTTR reduction</div>
+                <div class="value placeholder">Pending</div>
+              </div>
+              <div class="proof-stat">
+                <div class="label">Engineer-hours saved</div>
+                <div class="value placeholder">Pending</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. Methodology — horizontal 5-step rail -->
+      <section class="section-pad-y anno" data-screen-label="B · 10 Methodology" data-anno="10 · METHODOLOGY — horizontal 5-step rail">
+        <div class="container">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 48px;">
+            <div>
+              <span class="eyebrow">Methodology</span>
+              <h2 class="section-h2" style="margin-top: 16px;">How an engagement runs.</h2>
+            </div>
+            <p class="lead" style="color: var(--slate-600); margin: 0; max-width: 480px; justify-self: end;">Five phases. The same operating cadence whether the project is greenfield AIOps or a brownfield migration.</p>
+          </div>
+          <div class="method-rail">
+            <div class="step">
+              <span class="num">PHASE 01</span>
+              <div class="name">Discover</div>
+              <div class="desc">Two-week instrumented audit — observability, on-call data, change history.</div>
+            </div>
+            <div class="step">
+              <span class="num">PHASE 02</span>
+              <div class="name">Architect</div>
+              <div class="desc">Reference architecture matched to your compliance posture.</div>
+            </div>
+            <div class="step">
+              <span class="num">PHASE 03</span>
+              <div class="name">Build</div>
+              <div class="desc">Engineering — ours, yours, or a joint pod. Code review with the team.</div>
+            </div>
+            <div class="step">
+              <span class="num">PHASE 04</span>
+              <div class="name">Deploy</div>
+              <div class="desc">Cutover with a rollback plan. We carry the pager.</div>
+            </div>
+            <div class="step">
+              <span class="num">PHASE 05</span>
+              <div class="name">Optimize</div>
+              <div class="desc">Quarterly read-out — cost, MTTR, change-failure rate.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. Resources — single subscribe block -->
+      <section class="section-pad-y anno" data-screen-label="B · 11 Resources" data-anno="11 · RESOURCES — single subscribe block">
+        <div class="container">
+          <div class="resources-grid">
+            <div>
+              <span class="eyebrow">Insights</span>
+              <h2 class="section-h2-sm" style="margin-top: 16px;">Insights coming soon.</h2>
+              <p class="lead" style="margin-top: 16px; color: var(--slate-600); max-width: 440px;">Field notes from production AIOps — incident post-mortems, reference architectures, evals.</p>
+            </div>
+            <div>
+              <p style="font: 500 12px/1 var(--font-body); text-transform: uppercase; letter-spacing: 0.08em; color: var(--slate-500); margin: 0 0 16px;">Subscribe →</p>
+              <div style="display: flex; align-items: center; gap: 12px; border: 1px solid var(--slate-200); border-radius: 8px; padding: 8px 8px 8px 16px; background: #fff;">
+                <span style="color: var(--slate-500); font-size: 14px; flex: 1;">work@company.com</span>
+                <span class="btn btn-primary">Subscribe</span>
+              </div>
+              <p class="placeholder-mono" style="margin-top: 16px;">First issue — date pending.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. CTA strip -->
+      <section class="cta-strip full-bleed anno" data-screen-label="B · 12 CTA strip" data-anno="12 · CTA STRIP — symmetric">
+        <span class="eyebrow" style="color: rgba(255,255,255,0.56);">Get started</span>
+        <h2 style="margin-top: 16px; font: 700 48px/1.1 var(--font-display); letter-spacing: -0.02em;">Talk to an operator, not a sales engineer.</h2>
+        <div class="ctas">
+          <span class="btn btn-primary">Book a demo</span>
+          <span class="btn btn-ghost-dark">Explore the platform →</span>
+        </div>
+      </section>
+
+      <!-- 13. Footer -->
+      <section class="wf-footer full-bleed anno" data-screen-label="B · 13 Footer" data-anno="13 · FOOTER — symmetric">
+        <div class="wf-footer-grid">
+          <div>
+            <img class="logo" src="../assets/connexr-logo-white.png" alt="Connexr" />
+            <p style="font: 400 14px/1.55 var(--font-body); color: rgba(255,255,255,0.64); margin: 0; max-width: 320px;">AI-native operations for enterprise IT. A division of RSA Tech Group.</p>
+          </div>
+          <div>
+            <h5>Services</h5>
+            <ul>
+              <li>Managed AIOps</li>
+              <li>AI Transformation</li>
+              <li>Cloud &amp; Infrastructure</li>
+              <li>Security</li>
+              <li>Data &amp; Analytics</li>
+            </ul>
+          </div>
+          <div>
+            <h5>Products</h5>
+            <ul>
+              <li>LeoRix AI</li>
+              <li>Reference architectures</li>
+              <li>Runbook library</li>
+            </ul>
+          </div>
+          <div>
+            <h5>Company</h5>
+            <ul>
+              <li>About</li>
+              <li>Careers</li>
+              <li>Press</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+          <div>
+            <h5>Compliance</h5>
+            <ul>
+              <li>SOC 2 Type II</li>
+              <li>HIPAA</li>
+              <li>ISO 27001</li>
+              <li>GDPR</li>
+            </ul>
+          </div>
+        </div>
+        <div class="wf-footer-bottom">
+          <span>© 2026 Connexr · A division of RSA Tech Group</span>
+          <span>Privacy · Terms · Security</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -25,6 +25,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 - `docs/CLAUDE-DESIGN-PROMPTS.md`: paste-ready Wireframe and High-Fidelity prompts encoding zero-fabrication rules, type-led hero discipline, placeholder labeling, no-dead-code export, Title Case H1, and 3-breakpoint responsive requirements.
+- `frontend/`: new top-level folder containing the polished Variant B landing page (`Production.html`), design tokens (`tokens.css`), brand assets, and the wireframe reference round under `frontend/reference/`. Replaces `design-system/ui_kits/marketing-site/` as the canonical landing-page deliverable; the v1 UI kit is kept under `design-system/` for component-primitive reference but is no longer the production target.
+
+### Fixed (post-production-export)
+- 10 straight apostrophes in `Production.html` copy converted to curly typographic U+2019 (`don't`, `What's`, `we'll` contractions). 0 straight contractions remain. Brief specifies curly throughout.
 
 ---
 
