@@ -1016,6 +1016,10 @@ body { background: #fff; padding: 0; margin: 0; }
   box-shadow: none;
   border-radius: 0;
 }
+/* Pin focus-visible state on the two "Explore the platform" CTAs
+   so the orange ring is visible without keyboard-tabbing —
+   per stakeholder review preference. */
+.btn.focus { box-shadow: 0 0 0 2px var(--orange-500); outline: none; }
 
 </style>
 </head>
@@ -1054,7 +1058,7 @@ body { background: #fff; padding: 0; margin: 0; }
               <p class="subline">We run AI-native operations for enterprise IT — eliminating alert fatigue, automating incident response, and giving your team back the hours.</p>
               <div class="ctas">
                 <button class="btn btn-primary">Book a demo</button>
-                <button class="btn btn-secondary">Explore the platform →</button>
+                <button class="btn btn-secondary focus">Explore the platform →</button>
               </div>
               <div class="certs">
                 <span class="cert-chip dot">SOC 2 Type II</span>
@@ -1422,7 +1426,7 @@ body { background: #fff; padding: 0; margin: 0; }
         <h2>Talk to an operator, not a sales engineer.</h2>
         <div class="ctas">
           <button class="btn btn-primary">Book a demo</button>
-          <button class="btn btn-ghost-dark">Explore the platform →</button>
+          <button class="btn btn-ghost-dark focus">Explore the platform →</button>
         </div>
       </section>
 
