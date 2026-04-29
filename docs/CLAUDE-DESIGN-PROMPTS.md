@@ -128,8 +128,8 @@ LOCKED LAYOUT — carry forward from Variant B wireframe exactly:
   Asymmetric 60/40 hero with funnel schematic (3 clusters × 6 nodes, thin orange lines, "fig. 01 — signal flow" + "triage · dedup · route" mono labels) → Mono-label single-row Trust strip with 6 placeholder cells → Sticky-head Services 4/8 split with 6 cards in 2-col right grid → Tech Partners single dense row with "Platform partners →" mono label → Vertical sidebar Service Tabs → Dark navy-950 LeoRix asymmetric panel → Featured + 5 supporting Industries grid → Sidebar + 4-stat Proof grid with NDA link → Horizontal 5-step Methodology rail → Single subscribe Resources block → Symmetric navy-950 CTA Strip → 5-col Footer.
 
 WIREFRAME FIXES — apply these exactly in this build:
-  1. Embed all design system tokens INLINE in the <style> block. Do NOT link to external tokens.css. Output must be a single self-contained HTML file with zero external dependencies. No Cloudflare scripts, no email-protection markup, no third-party services.
-  2. Subscribe input: render as a static input with "Email address" placeholder text in slate-500 italic. No <a> tags, no email-obfuscation markup. Just a plain styled input next to the orange Subscribe button.
+  1. Embed all design system tokens INLINE in the <style> block. Do NOT link to external tokens.css. Output must be a single self-contained HTML file with NO JavaScript dependencies and NO Cloudflare scripts. Google Fonts @import for DM Sans + IBM Plex Sans/Mono/Serif IS required (it's how the locked typography loads). No third-party scripts beyond the Google Fonts CSS @import.
+  2. Subscribe input: render as <input type="email" name="email" aria-label="Email address" placeholder="Email address" /> with placeholder styled slate-500 italic, next to the orange Subscribe button. No <a> tags around the input, no email-obfuscation markup, no JS wiring.
   3. Trust strip: change the "Selected enterprise engagements" eyebrow to neutral "Trusted by enterprise IT teams" — until real logos land, no claim of "engagements". Keep the 6 placeholder cells exactly.
   4. LeoRix paragraph: replace the architectural claims with capability-only description. Exact copy: "Operator-grade reasoning for AIOps incident response. Available standalone or as part of a Managed AIOps engagement. Compliance posture inherits from your tenant. Specifications available on request." Keep the "Read the spec →" link and the orange accent bar.
   5. Service Tabs "What's included" bullets: soften contract-implying phrases. Replace "We carry the pager" with "Embedded on-call rotation". Replace "Quarterly executive read-out" with "Quarterly engagement review". Maintain operator-credible tone but avoid contractual specificity.
@@ -147,8 +147,9 @@ RESPONSIVE — render three breakpoints in vertically stacked panels:
 
 NAV — production:
   • Sticky 64px, default state + scrolled-with-blur (8px) state both shown on desktop frame, separated by a small canvas annotation "← scrolled state"
-  • Skip-to-content link as FIRST focusable element of the page. Visually hidden by default (clip-path or sr-only), reveals as orange chip top-left when focused.
-  • Mobile drawer ≤768px: hamburger icon top-right → slide-in panel from right, full-height, navy-950 background, white nav links, white CTA, focus-trap when open. Render the OPEN state in the mobile frame.
+  • Skip-to-content link as FIRST focusable element of the page. Visually hidden by default (clip-path or sr-only), reveals as orange chip top-left when focused. The link's href="#main"; page content is wrapped in <main id="main" tabindex="-1"> so the skip target exists.
+  • Mobile drawer ≤768px: hamburger icon top-right → slide-in panel from right, full-height, navy-950 background, white nav links, white CTA, focus-trap when open. Hamburger button has aria-label="Open navigation". Render the OPEN state in the mobile frame.
+  • Logo assets: reference at ./assets/connexr-logo.png (nav and footer, with the white variant connexr-logo-white.png on dark surfaces). Do NOT inline as data URI. Do NOT redraw as inline SVG. The assets folder is part of the design system bundle.
 
 INTERACTION STATES — annotate with small mono labels next to elements ("← hover", "← focus-visible", "← active", "← disabled"):
   • Primary CTA (orange): all 5 states — default / hover (orange-600) / focus-visible (2px orange-500 ring + 2px white inner ring) / active (-1px transform) / disabled (40% opacity, no cursor)
@@ -170,7 +171,7 @@ IMAGE / DECOR POLICY:
   • No stock photos. No AI illustrations. No blob shapes. No gradient meshes. No 3D anything.
   • Hero schematic preserved with the right-cluster orange→navy fix. Funnel topology intact: 6-6-6 nodes, thin orange connecting lines, faint cluster guides, mono labels.
   • Decorative slots elsewhere = abstract geometric placeholders (a thin orange rule, a single small dot, a clean grid pattern). Already present in wireframe — preserve.
-  • Cert chips render as styled monochrome text chips (existing approach), never logo images.
+  • Cert chips: in Hero, each chip has a small orange-500 leading dot prefix (existing .cert-chip.dot pattern from wireframe). In Proof and Footer, chips render plain (text only, no dot). This visual variation is intentional — preserve it. Never logo images.
   • Trust strip = 6 placeholder cells. No text wordmarks, no fake company names.
 
 QUALITY BAR (must clear in one shot):
