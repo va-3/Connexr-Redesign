@@ -204,6 +204,158 @@ Generate the production page in one continuous canvas with the 3 breakpoint pane
 
 ---
 
+## PROMPT 3 — Stakeholder Preview (single-desktop, interactive)
+
+> Generates a NEW file (`Preview.html`) alongside the existing `Production.html` — does not overwrite. Single canonical desktop view, viewport-fluid for MacBook screens, with a marquee Trust strip and a fully wired Service Tabs component. Use for stakeholder review when the multi-state engineering spec is too cluttered.
+
+```
+The Connexr design system is attached. /docs/DESIGN-BRIEF.md is the canonical brief. The locked Variant B layout from the production round stays canonical.
+
+Build a NEW artifact in this project — DO NOT modify the existing Production.html. Save the new file as `Preview.html`. This is a stakeholder-grade preview for visual review on a MacBook, with light interactivity baked in. It is NOT an engineering spec — strip all spec affordances (no breakpoint frames, no annotation layers, no state demonstration blocks, no canvas chrome).
+
+LAYOUT & VIEWPORT
+- Single desktop preview, viewport-fluid: layout fills the available width with content max-width 1440px centered. Scales gracefully on common MacBook viewports (1440 / 1512 / 1728). No fixed 1440px wrapper, no canvas chrome, no panel labels.
+- Use the locked Variant B layout exactly: 60/40 asymmetric hero with funnel schematic, sticky-head Services 4/8 split, vertical sidebar Service Tabs, dark navy-950 LeoRix asymmetric panel, featured + 5 supporting Industries grid, sidebar + 4-stat Proof, horizontal 5-step Methodology rail, single-subscribe Resources, navy-950 CTA Strip, 5-col Footer.
+
+PINNED CTA STATES
+- Primary "Book a demo" CTAs (nav, hero, CTA strip): default state — orange-500 fill, white text, no ring.
+- Both "Explore the platform →" CTAs (hero + CTA strip): rendered with the focus-visible state pinned via a `.focus` class so the 2px orange-500 ring is visible without keyboard tabbing. This is the page's only state demonstration.
+- All other interactive elements stay in default.
+
+TRUST STRIP — infinite marquee
+- Replace the static 6-cell trust strip with an infinite horizontal marquee of 8–10 abstract logo placeholders. Each placeholder is a geometric monogram (circle / square / hexagon / triangle / diamond / capsule), ~120×64px, slate-500 1.5px stroke on transparent background, with a small mono caption "PLACEHOLDER 01" / "PLACEHOLDER 02" centered beneath.
+- Animation: seamless horizontal scroll, ~30s per loop, paused on hover. Use CSS `transform: translateX()` with `will-change: transform`; do NOT animate `left`/`margin`. Duplicate the marquee track inline so the loop is unbroken (no JS-driven seam).
+- Mask the marquee edges with a 64px linear-gradient fade on left + right so logos don't pop in/out abruptly.
+- Respect `prefers-reduced-motion: reduce`: when set, freeze the animation and render a static row of 6 placeholders centered in the viewport.
+- ZERO-FABRICATION applies: do NOT invent real company names or wordmarks. Placeholders are abstract geometric shapes only. Eyebrow stays "Trusted by enterprise IT teams".
+
+SERVICE TABS — functional component
+- The 3-tab component (Managed AIOps / AI Transformation / Cloud & Infrastructure) is fully wired with vanilla JS, no framework dependencies, no external libraries.
+- Tab switching: click swaps the active panel; only the active panel is rendered visible (use the `hidden` attribute on inactive panels). Active tab styling: orange-500 left border, navy-900 weight-600 text.
+- ARIA: `role="tablist"` on the sidebar container, `role="tab"` with `aria-selected="true|false"` and `aria-controls="<panel-id>"` on each tab, `tabindex="0"` on the active tab and `tabindex="-1"` on the inactive ones, `role="tabpanel"` with `aria-labelledby="<tab-id>"` on each content panel.
+- Keyboard navigation: ArrowDown/ArrowUp move focus between tabs without activating; Enter or Space activates the focused tab and moves focus to its panel; Home jumps to first tab, End jumps to last.
+- Each panel uses the existing capability bullets from the locked Variant B layout. No new copy, no contract-implying language ("SLA-backed", "we carry the pager"), no invented metrics.
+
+ZERO-FABRICATION — carries from production, non-negotiable
+- No invented client names, metrics, testimonials, product UI, article titles, or architectural claims about LeoRix. Trust strip = abstract geometric placeholders only.
+- LeoRix section: capability-only paragraph + "Read the spec →" link. NO stats grid, NO product screenshot.
+- Proof section: italic "Pending" stat boxes + cert chips + "Case study available under NDA — request access →" link.
+- Resources: single "Insights coming soon — subscribe →" block with semantic `<input type="email" name="email" aria-label="Email address">`.
+- All copy uses curly typographic apostrophes (U+2019) and em-dashes (U+2014). Zero straight apostrophes.
+
+QUALITY BAR
+- 8pt grid throughout. Radii from {0, 4, 8, 12}. Per-section orange cap of 3 intentional touchpoints. Hierarchy via type weight + size + spatial separation, not color saturation.
+- Single self-contained HTML file. Tokens inlined. Google Fonts @import for DM Sans + IBM Plex Sans/Mono/Serif (the one allowed external load). Logo references at `./assets/connexr-logo.png` and `connexr-logo-white.png` — relative path, not data-URI'd, not redrawn as inline SVG.
+- Semantic HTML: `<header>` with `<nav>`, `<main id="main" tabindex="-1">`, `<section>` per content block, `<footer>`. Skip-to-content link as first focusable element with `href="#main"`, hidden by default, revealed on focus.
+- Focus-visible state on every interactive element renders the 2px orange-500 ring per the existing pattern.
+- No dead code in the HTML/JS export — every defined component, class, or function is used.
+
+OUTPUT
+- Save as `Preview.html` (new file alongside Production.html — do NOT overwrite the existing file).
+- Single canonical desktop preview. No three-breakpoint stack, no canvas frame, no panel labels, no annotation labels, no state demonstration blocks.
+- Surface for review before export.
+```
+
+---
+
+## PROMPT 4 — Hero Architecture Spin (replaces the funnel schematic)
+
+> Surgical replacement of the hero right-column schematic in the existing `Production.html`. Swaps the saturated funnel-shape diagram for a labeled five-layer operating-system schematic in an engineering-drawing aesthetic. Cream surface, Plex Mono labels, compliance envelope as structural element, single pulsing accent on the LeoRix node.
+
+```
+The Connexr design system is attached. /docs/DESIGN-BRIEF.md is the canonical brief. The locked Variant B layout from the production round stays canonical.
+
+SCOPE: replace ONLY the hero right-column schematic in Production.html. Do NOT regenerate or modify any other section, copy, or component. The hero left column (eyebrow, H1, subline, CTAs, cert chips), all 12 other sections, and the canvas chrome (panel labels, breakpoint frames) remain identical to the current Production.html. Apply the same hero-schematic replacement consistently across all three breakpoints (desktop 1440 / tablet 768 / mobile 375).
+
+REPLACE THE HERO SCHEMATIC
+
+The current hero right visual is a funnel-shape SVG with three vertical clusters of 6 nodes connected by thin orange lines. That pattern reads as generic enterprise-IT clipart — saturated across the competitive set. Replace it with a deliberate, labeled architecture schematic rendered in an engineering-drawing register that reads as Connexr's own internal operating-system reference, not a stock template.
+
+VISUAL TREATMENT — "blueprint reference"
+
+The new schematic occupies the same hero right column (40% width on desktop, 4:3 aspect ratio surface). Material treatment:
+
+- Surface: a 12px border-radius cream panel (#FAF8F1) with a 1px slate-200 outer hairline. The cream is intentional — it's warmer than pure white and signals "engineering reference document" rather than "marketing graphic". This is the only #FAF8F1 surface on the page; do not introduce it elsewhere.
+- Internal padding: 32px. All internal spacing on the strict 8pt grid (4, 8, 12, 16, 24, 32, 48).
+- Stroke-only construction throughout. Navy #122560 hairlines at 1px (default) and 2px (layer outlines). No filled shapes except the single accent node described below.
+- Typography on the diagram: IBM Plex Mono only. 11px slate-500 (#64748B) for layer body labels, 10px UPPERCASE letter-spacing 0.08em for layer titles, 9px slate-400 for footnote-style annotations. No display typeface inside the diagram — it is reference material, not editorial.
+- Reference annotations in the engineering-drawing tradition: "fig. 01 — leorix runtime, simplified" mono caption anchored top-left of the surface; "§ schematic-01.0" mono caption anchored bottom-right; faint 2-2 dotted dimension lines (1px slate-300) connecting external labels to their target rectangles where helpful.
+- No drop shadows, no gradients, no glow effects, no glass morphism. The surface is flat by intent.
+
+STRUCTURE — five-layer operating stack with compliance envelope
+
+The diagram renders the LeoRix AIOps runtime as a five-layer vertical stack inside the cream surface. Each layer is a 2px slate-300 outlined rectangle, 8px border-radius, with an inner 1px slate-200 hairline 8px inside the outer outline (creating a thin double-line treatment that reads as engineering-drawing convention). Each layer carries a section-number title on the left and 2–4 sub-component descriptors on the right.
+
+From top to bottom (vertical stack, equal heights, 12px gaps between layers):
+
+  § 01 · INGEST          telemetry · logs · traces · tickets
+  § 02 · SUPPRESS        correlation · dedup · noise floor
+  § 03 · ENRICH          LeoRix AI · root-cause inference · runbook selection
+  § 04 · ACT             auto-remediate · escalate · runbook execution
+  § 05 · ATTEST          evidence trail · audit log · change record
+
+A dotted-perimeter "compliance envelope" wraps the entire 5-layer stack. The envelope is a 2px slate-300 dashed (4-4 dasharray) rounded-rect with 12px border-radius, padded 16px outside the layer rectangles. Along the top edge of the envelope, centered, in IBM Plex Mono 10px slate-500 letter-spacing 0.06em UPPERCASE: "ATTESTED · SOC 2 TYPE II · HIPAA · ISO 27001 · GDPR". This makes the certifications part of the architecture, not a separate footer ornament.
+
+ACCENT — the only orange in the schematic
+
+Layer 03 (ENRICH) is the load-bearing element. Its outer rectangle outline is rendered in orange-500 #F27A1A (1px stroke, matching weight; no fill). Inside layer 03, immediately preceding the "LeoRix AI" text, a small filled orange-500 circle (radius 3px) anchored on the same baseline as the layer label.
+
+That circle is the single live element: a subtle pulse animation. CSS keyframe only, no JavaScript:
+- transform: scale(1.0) → scale(1.4) → scale(1.0) over 2.4s, ease-in-out
+- opacity: 1.0 → 0.55 → 1.0 in lockstep
+- transform-origin: center
+- animation: infinite
+- will-change: transform, opacity for GPU-accelerated motion
+- Wrap the entire @keyframes + animation declaration in @media (prefers-reduced-motion: no-preference) { ... }. Users with prefers-reduced-motion: reduce see the schematic fully static — the dot remains visible but does not animate.
+
+Orange appears nowhere else in the schematic. The hairlines, layer outlines (except 03), labels, dimension lines, captions, and compliance envelope are all navy or slate. The single-accent-per-section rule is respected.
+
+LAYOUT BEHAVIOR ACROSS BREAKPOINTS
+
+- Desktop 1440px: schematic surface fills the right 40% column, full 4:3 aspect ratio.
+- Tablet 768px: hero stacks single-column; schematic surface sits below the hero copy block at full container width, height auto, maintaining 4:3 internally.
+- Mobile 375px: schematic surface compresses to fit the column. Layer rectangles remain full-width within the surface; sub-component label text wraps to a second line if needed; mono labels reduce to 10px for layer body, 9px for titles. Pulse animation continues to honor prefers-reduced-motion.
+
+SVG IMPLEMENTATION SPEC
+
+- Inline <svg viewBox="0 0 480 360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="LeoRix AIOps runtime — five-layer architecture: ingest, suppress, enrich, act, attest, wrapped by an attested compliance envelope (SOC 2 Type II, HIPAA, ISO 27001, GDPR).">
+- Internal <text> elements use IBM Plex Mono via the existing @import (already loaded for the page). Do NOT add a second font load.
+- All <rect>, <line>, <text> elements in the schematic carry the same fill/stroke pattern; no inline color overrides except the orange accent rectangle and circle.
+- The animated <circle> is the only element with the .pulse class. CSS for the pulse keyframe is added inside the existing <style> block, not as a separate <style> tag.
+
+ZERO-FABRICATION (non-negotiable)
+
+- No invented metrics: no "47 alerts", no "MTTR ↓ 64%", no specific timing claims, no version strings. The schematic is structural, not data-driven.
+- No invented client names, no specific tool brands inside the schematic (no "Splunk", "Datadog", "ServiceNow" labels — those belong in the existing Tech Partners section, not the architecture).
+- LeoRix label inside layer 03 reads exactly "LeoRix AI · root-cause inference · runbook selection" — capability descriptors only, no quantified claims, no version number.
+- Compliance envelope text is exactly the four certifications already attested by Connexr: SOC 2 Type II, HIPAA, ISO 27001, GDPR. Do not add others.
+- "fig. 01" caption and "§ schematic-01.0" reference are typographic engineering-drawing convention — they do not invent a series of figures or sections that exist elsewhere.
+
+QUALITY BAR
+
+- 8pt grid throughout the schematic surface (padding, layer heights, gaps, label offsets).
+- Per-section orange-accent cap respected (the orange outline + pulse dot count as the section's accent moments).
+- Hairlines at 1px or 2px only. No fills except the pulse dot.
+- Type-led hierarchy inside the schematic (size + weight + spatial separation, not color).
+- Cream surface #FAF8F1 used only here on the page — distinguishes the schematic from white card surfaces and dark navy-950 sections.
+- Single self-contained SVG inlined in the HTML. No external image asset. No JavaScript framework. No animation library.
+- Curly typographic apostrophes (U+2019) and em-dashes (U+2014) in any new label copy. Zero straight apostrophes.
+
+DO NOT TOUCH
+
+- Hero left column (eyebrow, H1 "AI at the Core. Scale at Speed.", subline, two CTAs, four cert chips with orange dots) — unchanged.
+- Trust strip, Services, Tech Partners, Service Tabs, LeoRix AI section, Industries, Proof, Methodology, Resources, CTA Strip, Footer — unchanged.
+- The locked Variant B layout structure — unchanged.
+- The button-states reference block in the desktop frame — unchanged.
+- Tablet and mobile breakpoint frames — only the schematic content within their respective heroes changes; the rest of each frame is unchanged.
+
+OUTPUT
+
+Surface the updated Production.html with the new hero schematic on the canvas for review. Annotate the schematic in the desktop frame with a small mono label below the surface: "← architecture schematic · static + single pulse on LeoRix node · respects prefers-reduced-motion". Apply the same schematic to tablet and mobile breakpoints, with the responsive behavior described above. Re-export when approved.
+```
+
+---
+
 ## Mid-flight rescue prompts
 
 If a variant drifts into AI-generic territory, drop one of these as an inline comment on the offending section:

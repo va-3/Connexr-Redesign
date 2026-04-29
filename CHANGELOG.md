@@ -32,6 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 - Split the landing-page artifact into two files for distinct audiences. The original `frontend/Production.html` is renamed to `frontend/Handover.html` (the engineering handoff spec — multi-state, multi-breakpoint, annotated). A new `frontend/Final-Desktop.html` is the clean stakeholder preview (single desktop view, no annotations, no state demos, no canvas chrome). README in `frontend/` updated to explain when to use each.
+- `docs/CLAUDE-DESIGN-PROMPTS.md` extended with two new paste-ready prompts: PROMPT 3 (Stakeholder Preview — single-desktop, marquee Trust strip, fully wired ARIA tablist) and PROMPT 4 (Hero Architecture Spin — replaces the funnel schematic with a five-layer operating-stack diagram on a cream surface, compliance envelope as structural element, single pulsing accent on the LeoRix node). Both keep the locked design tokens, zero-fabrication rules, and senior-FE quality bar.
 
 ---
 
