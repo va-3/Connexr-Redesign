@@ -1,0 +1,1485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Connexr — Production landing (Desktop · Tablet · Mobile)</title>
+<meta name="viewport" content="width=1480" />
+<style>
+/* =============================================================
+   Connexr Design System — Foundations (INLINED)
+   ============================================================= */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@400;700&display=swap");
+
+:root {
+  --navy-900:  #122560;
+  --navy-950:  #0F1629;
+  --navy-800:  #1B3284;
+  --navy-700:  #1E3A8A;
+  --navy-200:  #B8C2DD;
+  --navy-100:  #DDE2EE;
+  --orange-500: #F27A1A;
+  --orange-600: #DB6A0E;
+  --orange-100: #FDEBD8;
+  --bg-50:     #F8FAFC;
+  --white:     #FFFFFF;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748B;
+  --slate-400: #94A3B8;
+  --slate-300: #CBD5E1;
+  --slate-200: #E2E8F0;
+  --slate-100: #F1F5F9;
+
+  --bg: var(--white);
+  --fg: var(--navy-950);
+  --fg-strong: var(--navy-900);
+  --fg-muted: var(--slate-600);
+  --fg-subtle: var(--slate-500);
+  --accent: var(--orange-500);
+  --accent-hover: var(--orange-600);
+  --border: var(--slate-200);
+  --focus-ring: var(--orange-500);
+
+  --font-display: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body:    "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, monospace;
+  --font-serif:   "IBM Plex Serif", ui-serif, Georgia, serif;
+
+  --radius-0: 0;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --shadow-sm: 0 1px 2px rgba(18,37,96,0.05);
+  --shadow-md: 0 8px 24px rgba(18,37,96,0.06);
+  --shadow-lg: 0 20px 48px rgba(18,37,96,0.10);
+}
+
+/* Reset / base */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #EEF1F6;
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  padding: 48px 0 96px;
+}
+
+/* =============================================================
+   Canvas chrome — three stacked breakpoint panels
+   ============================================================= */
+.canvas {
+  width: 1520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+.panel-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0 8px 12px;
+  border-bottom: 1px solid var(--slate-300);
+  margin: 0 auto 16px;
+  width: 100%;
+  max-width: 1440px;
+}
+.panel-label h2 {
+  font: 700 24px/1.2 var(--font-display);
+  letter-spacing: -0.01em;
+  color: var(--navy-900);
+  margin: 0;
+}
+.panel-label .tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--slate-500);
+  letter-spacing: 0.04em;
+}
+.panel-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Each frame is its own scope — width-locked, internal styles "respond" via class on .frame */
+.frame {
+  background: var(--white);
+  border: 1px solid var(--slate-300);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  color: var(--navy-950);
+  font-family: var(--font-body);
+}
+.frame-desktop { width: 1440px; }
+.frame-tablet  { width: 768px; }
+.frame-mobile  { width: 375px; }
+
+/* Annotation labels (canvas-only) */
+.canvas-anno {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--slate-500);
+  margin: 12px 0 0;
+  display: block;
+}
+.state-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--slate-500);
+  white-space: nowrap;
+}
+
+/* =============================================================
+   Frame-internal token-driven primitives
+   (we scope variations by .frame-desktop / -tablet / -mobile)
+   ============================================================= */
+
+/* Type primitives */
+.frame .eyebrow {
+  font: 500 12px/1.4 var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate-500);
+}
+.frame .h1 {
+  font: 700 72px/1.05 var(--font-display);
+  letter-spacing: -0.025em;
+  color: var(--navy-900);
+  margin: 0;
+}
+.frame .h2 {
+  font: 700 48px/1.05 var(--font-display);
+  letter-spacing: -0.025em;
+  color: var(--navy-900);
+  margin: 0;
+}
+.frame .h3 {
+  font: 700 32px/1.15 var(--font-display);
+  letter-spacing: -0.015em;
+  color: var(--navy-900);
+  margin: 0;
+}
+.frame .h4 {
+  font: 600 24px/1.25 var(--font-display);
+  color: var(--navy-900);
+  margin: 0;
+}
+.frame .lead {
+  font: 400 18px/1.55 var(--font-body);
+  color: var(--navy-950);
+}
+.frame .muted { color: var(--slate-600); }
+.frame .placeholder {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--slate-500);
+}
+.frame .placeholder-mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--slate-500);
+  letter-spacing: 0.02em;
+}
+
+/* Mobile overrides */
+.frame-mobile .h1 { font-size: 40px; line-height: 1.05; letter-spacing: -0.02em; }
+.frame-mobile .h2 { font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; }
+.frame-mobile .h3 { font-size: 24px; }
+.frame-mobile .lead { font-size: 16px; }
+
+/* Tablet overrides */
+.frame-tablet .h1 { font-size: 56px; line-height: 1.05; }
+.frame-tablet .h2 { font-size: 40px; }
+
+/* Buttons */
+.frame .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 14px/1 var(--font-body);
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 120ms cubic-bezier(.2,0,.2,1), border-color 120ms;
+  background: transparent;
+  color: var(--navy-900);
+}
+.frame .btn-primary { background: var(--orange-500); color: #fff; }
+.frame .btn-primary.hover, .frame .btn-primary:hover { background: var(--orange-600); }
+.frame .btn-primary.focus, .frame .btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff inset, 0 0 0 4px var(--orange-500);
+}
+.frame .btn-primary.active { transform: translateY(1px); }
+.frame .btn-primary.disabled { opacity: 0.4; cursor: not-allowed; }
+.frame .btn-secondary { background: transparent; color: var(--navy-900); border-color: var(--slate-300); }
+.frame .btn-secondary.hover, .frame .btn-secondary:hover { background: var(--slate-100); }
+.frame .btn-secondary.focus, .frame .btn-secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--orange-500);
+}
+.frame .btn-ghost { background: transparent; color: var(--navy-900); border-color: transparent; }
+.frame .btn-ghost.hover, .frame .btn-ghost:hover { background: var(--slate-100); }
+.frame .btn-ghost.focus, .frame .btn-ghost:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--orange-500);
+}
+.frame .btn-ghost-dark { background: transparent; color: #fff; border-color: rgba(255,255,255,0.32); }
+
+/* Cert chips */
+.frame .cert-chip {
+  display: inline-flex;
+  align-items: center;
+  font: 500 12px/1 var(--font-body);
+  letter-spacing: 0.04em;
+  color: var(--navy-900);
+  border: 1px solid var(--slate-300);
+  border-radius: 4px;
+  padding: 8px 12px;
+  background: #fff;
+}
+.frame .cert-chip.dot::before {
+  content: "";
+  display: inline-block;
+  width: 6px; height: 6px;
+  margin-right: 8px;
+  border-radius: 9999px;
+  background: var(--orange-500);
+}
+.frame .cert-row { display: inline-flex; flex-wrap: wrap; gap: 8px; }
+
+/* Section padding */
+.frame section { padding: 96px 64px; }
+.frame-tablet section { padding: 64px 32px; }
+.frame-mobile  section { padding: 48px 24px; }
+.frame .full-bleed { padding-left: 0; padding-right: 0; }
+.frame .container { max-width: 1312px; margin: 0 auto; }
+.frame-tablet .container { max-width: 100%; }
+.frame-mobile  .container { max-width: 100%; }
+
+/* =============================================================
+   Skip link — visually hidden until focus
+   ============================================================= */
+.skip-link {
+  position: absolute;
+  left: 16px; top: 16px;
+  background: var(--orange-500);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 4px;
+  font: 500 14px/1 var(--font-body);
+  z-index: 100;
+  text-decoration: none;
+  clip-path: inset(50%);
+  width: 1px; height: 1px;
+  overflow: hidden;
+}
+.skip-link.visible {
+  clip-path: none;
+  width: auto; height: auto;
+}
+
+/* =============================================================
+   NAV
+   ============================================================= */
+.frame .nav {
+  height: 64px;
+  border-bottom: 1px solid var(--slate-200);
+  display: flex;
+  align-items: center;
+  padding: 0 64px;
+  background: #fff;
+}
+.frame-mobile .nav { padding: 0 24px; }
+.frame-tablet .nav { padding: 0 32px; }
+.frame .nav.scrolled {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.frame .nav .logo { height: 28px; display: block; }
+.frame .nav ul {
+  list-style: none;
+  margin: 0 0 0 64px;
+  padding: 0;
+  display: flex;
+  gap: 32px;
+}
+.frame .nav li {
+  font: 500 14px/1 var(--font-body);
+  color: var(--navy-900);
+}
+.frame .nav .right { margin-left: auto; display: flex; align-items: center; gap: 24px; }
+.frame .nav .signin { font: 500 14px/1 var(--font-body); color: var(--navy-900); }
+
+/* Hamburger for tablet/mobile */
+.hamburger {
+  width: 40px; height: 40px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: 1px solid var(--slate-200);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.hamburger span {
+  width: 18px; height: 1.5px;
+  background: var(--navy-900);
+  display: block;
+}
+
+/* Mobile drawer (rendered open in mobile frame) */
+.drawer {
+  position: absolute;
+  top: 0; right: 0;
+  width: 320px;
+  height: 100%;
+  background: var(--navy-950);
+  color: #fff;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  z-index: 50;
+  box-shadow: var(--shadow-lg);
+}
+.drawer .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.drawer .top .x {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+.drawer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.drawer li a {
+  color: #fff;
+  font: 500 18px/1.2 var(--font-display);
+  text-decoration: none;
+}
+.drawer .drawer-cta { margin-top: auto; }
+.drawer .drawer-cta .btn { width: 100%; justify-content: center; }
+
+/* =============================================================
+   HERO — 60/40 asymmetric, schematic right
+   ============================================================= */
+.frame .hero {
+  border-bottom: 1px solid var(--slate-200);
+}
+.frame .hero-grid {
+  display: grid;
+  grid-template-columns: 60fr 40fr;
+  gap: 64px;
+  align-items: center;
+}
+.frame-tablet .hero-grid { gap: 48px; }
+.frame-mobile  .hero-grid {
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+.frame .hero h1 { margin-top: 24px; }
+.frame .hero .subline {
+  font: 400 18px/1.55 var(--font-body);
+  color: var(--navy-950);
+  margin: 24px 0 0;
+  max-width: 560px;
+}
+.frame-mobile .hero .subline { font-size: 16px; }
+.frame .hero .ctas { margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap; }
+.frame .hero .certs { margin-top: 32px; display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Schematic */
+.schematic {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--slate-200);
+  border-radius: 12px;
+  background:
+    linear-gradient(to right, rgba(226,232,240,0.4) 1px, transparent 1px) 0 0/64px 100%,
+    #FBFCFE;
+  position: relative;
+}
+.schematic .meta {
+  position: absolute;
+  top: 16px; left: 16px;
+  font: 400 12px/1 var(--font-mono);
+  color: var(--slate-500);
+  letter-spacing: 0.04em;
+}
+.schematic .scale {
+  position: absolute;
+  bottom: 16px; right: 16px;
+  font: 400 12px/1 var(--font-mono);
+  color: var(--slate-500);
+  letter-spacing: 0.04em;
+}
+
+/* =============================================================
+   TRUST STRIP
+   ============================================================= */
+.frame .trust { padding-top: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--slate-200); }
+.frame .trust-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.frame-tablet .trust-grid { grid-template-columns: 1fr; gap: 24px; }
+.frame-mobile  .trust-grid { grid-template-columns: 1fr; gap: 24px; }
+.frame .trust .label {
+  font: 500 12px/1.4 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--slate-500);
+}
+.frame .trust-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+.frame-tablet .trust-row { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.frame-mobile  .trust-row { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.frame .logo-placeholder {
+  height: 64px;
+  border: 1px solid var(--slate-200);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+.frame-mobile .logo-placeholder { height: 56px; }
+
+/* =============================================================
+   GENERIC CARD
+   ============================================================= */
+.frame .card {
+  background: #fff;
+  border: 1px solid var(--slate-200);
+  border-radius: 8px;
+  padding: 32px;
+  cursor: pointer;
+  transition: border-color 120ms cubic-bezier(.2,0,.2,1), box-shadow 200ms;
+}
+.frame .card .h4 { margin: 0 0 12px; }
+.frame .card p {
+  font: 400 16px/1.55 var(--font-body);
+  color: var(--slate-600);
+  margin: 0;
+}
+.frame .card .tag {
+  font: 500 12px/1 var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--slate-500);
+  margin: 0 0 16px;
+  display: block;
+}
+.frame .card.hover, .frame .card:hover {
+  border-color: var(--navy-200);
+  box-shadow: var(--shadow-md);
+}
+.frame-mobile .card { padding: 24px; }
+
+/* =============================================================
+   SERVICES — sticky head + 6 cards 2-col
+   ============================================================= */
+.frame .services-grid {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: 64px;
+}
+.frame-tablet .services-grid { grid-template-columns: 1fr; gap: 48px; }
+.frame-mobile  .services-grid { grid-template-columns: 1fr; gap: 32px; }
+.frame .services-grid .head {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+}
+.frame-tablet .services-grid .head { position: static; }
+.frame-mobile  .services-grid .head { position: static; }
+.frame .services-grid .cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.frame-mobile .services-grid .cards { grid-template-columns: 1fr; gap: 16px; }
+
+/* =============================================================
+   TECH PARTNERS — single dense row
+   ============================================================= */
+.frame .partners {
+  border-top: 1px solid var(--slate-200);
+  border-bottom: 1px solid var(--slate-200);
+  padding: 48px 64px;
+  margin: 0;
+}
+.frame-tablet .partners { padding: 48px 32px; }
+.frame-mobile  .partners { padding: 32px 24px; }
+.frame .partners-grid {
+  display: grid;
+  grid-template-columns: 200px repeat(6, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+.frame-tablet .partners-grid { grid-template-columns: 1fr 1fr 1fr; gap: 24px 16px; }
+.frame-tablet .partners-grid .label { grid-column: 1 / -1; margin-bottom: 8px; }
+.frame-mobile  .partners-grid { grid-template-columns: 1fr 1fr; gap: 16px 16px; }
+.frame-mobile  .partners-grid .label { grid-column: 1 / -1; margin-bottom: 8px; }
+.frame .partners-grid .label {
+  font: 500 12px/1.4 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--slate-500);
+}
+.frame .partners-grid .cell {
+  font: 500 14px/1 var(--font-body);
+  color: var(--navy-900);
+  padding: 16px 0 16px 16px;
+  border-left: 1px solid var(--slate-200);
+}
+.frame-tablet .partners-grid .cell:nth-child(2),
+.frame-tablet .partners-grid .cell:nth-child(5) { border-left-color: var(--slate-200); }
+.frame-mobile  .partners-grid .cell { padding-left: 12px; }
+
+/* =============================================================
+   SERVICE TABS — vertical sidebar
+   ============================================================= */
+.frame .tabs-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+}
+.frame-tablet .tabs-grid { grid-template-columns: 1fr; gap: 32px; }
+.frame-mobile  .tabs-grid { grid-template-columns: 1fr; gap: 24px; }
+.frame .tabs-side { display: flex; flex-direction: column; }
+.frame-tablet .tabs-side { flex-direction: row; gap: 0; border-bottom: 1px solid var(--slate-200); }
+.frame-mobile  .tabs-side { flex-direction: row; gap: 0; border-bottom: 1px solid var(--slate-200); }
+.frame .tabs-side .tab {
+  padding: 16px 0 16px 16px;
+  border-left: 2px solid transparent;
+  font: 500 16px/1.3 var(--font-body);
+  color: var(--slate-500);
+  cursor: pointer;
+  transition: color 120ms;
+}
+.frame-tablet .tabs-side .tab,
+.frame-mobile  .tabs-side .tab {
+  padding: 12px 16px;
+  border-left: 0;
+  border-bottom: 2px solid transparent;
+}
+.frame .tabs-side .tab.active {
+  color: var(--navy-900);
+  border-left-color: var(--orange-500);
+  font-weight: 600;
+}
+.frame-tablet .tabs-side .tab.active,
+.frame-mobile  .tabs-side .tab.active {
+  border-left-color: transparent;
+  border-bottom-color: var(--orange-500);
+}
+.frame .tabs-side .tab.hover { color: var(--navy-700); }
+.frame-mobile .tabs-side { font-size: 14px; }
+.frame-mobile .tabs-side .tab { padding: 12px 8px; font-size: 13px; }
+.frame .tab-panel {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+}
+.frame-tablet .tab-panel { grid-template-columns: 1fr; gap: 32px; }
+.frame-mobile  .tab-panel { grid-template-columns: 1fr; gap: 24px; }
+.frame .tab-panel .panel-h3 { font: 700 32px/1.15 var(--font-display); color: var(--navy-900); margin: 0 0 16px; letter-spacing: -0.015em; }
+.frame-mobile .tab-panel .panel-h3 { font-size: 24px; }
+
+/* Alternate tab panel demo block (under default) */
+.frame .tab-alt-marker {
+  margin: 64px 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.frame .tab-alt-marker hr {
+  flex: 1;
+  border: 0;
+  border-top: 1px dashed var(--slate-300);
+}
+.frame .tab-alt-marker span {
+  font: 400 12px/1 var(--font-mono);
+  color: var(--slate-500);
+  letter-spacing: 0.04em;
+}
+
+/* =============================================================
+   LEORIX — dark navy-950 asymmetric panel
+   ============================================================= */
+.frame .leorix {
+  background: var(--navy-950);
+  color: rgba(255,255,255,0.92);
+  padding: 96px 64px;
+}
+.frame-tablet .leorix { padding: 64px 32px; }
+.frame-mobile  .leorix { padding: 48px 24px; }
+.frame .leorix .leorix-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+  max-width: 1312px;
+  margin: 0 auto;
+}
+.frame-tablet .leorix .leorix-grid { grid-template-columns: 1fr; gap: 32px; }
+.frame-mobile  .leorix .leorix-grid { grid-template-columns: 1fr; gap: 24px; }
+.frame .leorix .eyebrow { color: rgba(255,255,255,0.56); }
+.frame .leorix h2 {
+  font: 700 48px/1.05 var(--font-display);
+  letter-spacing: -0.025em;
+  color: #fff;
+  margin: 16px 0 0;
+}
+.frame-tablet .leorix h2 { font-size: 40px; }
+.frame-mobile  .leorix h2 { font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; }
+.frame .leorix .accent-bar {
+  width: 32px; height: 2px;
+  background: var(--orange-500);
+  display: block;
+  margin-top: 32px;
+}
+.frame .leorix p {
+  font: 400 18px/1.65 var(--font-body);
+  color: rgba(255,255,255,0.84);
+  margin: 0;
+  max-width: 640px;
+}
+.frame-mobile .leorix p { font-size: 16px; }
+.frame .leorix .read {
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  padding-bottom: 2px;
+  font: 500 14px/1 var(--font-body);
+  text-decoration: none;
+}
+
+/* =============================================================
+   INDUSTRIES — featured + 5 supporting
+   ============================================================= */
+.frame .industries-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+.frame-tablet .industries-head { grid-template-columns: 1fr; gap: 24px; }
+.frame-mobile  .industries-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; }
+.frame .industries-head .lead { max-width: 480px; justify-self: end; margin: 0; color: var(--slate-600); }
+.frame-tablet .industries-head .lead,
+.frame-mobile  .industries-head .lead { justify-self: start; max-width: 100%; }
+.frame .industries-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
+  gap: 16px;
+}
+.frame-tablet .industries-grid {
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto;
+}
+.frame-mobile .industries-grid {
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+}
+.frame .industries-grid .feature {
+  grid-column: 1; grid-row: 1 / 4;
+  background: var(--bg-50);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.frame-tablet .industries-grid .feature { grid-column: 1 / -1; grid-row: auto; }
+.frame-mobile .industries-grid .feature { grid-column: 1; grid-row: auto; }
+.frame .industries-grid .feature .h4 { font-size: 32px; }
+.frame .industries-grid .feature p { font-size: 18px; }
+.frame-mobile .industries-grid .feature .h4 { font-size: 24px; }
+.frame-mobile .industries-grid .feature p { font-size: 16px; }
+.frame .industries-grid .span-2 { grid-column: 2 / span 2; grid-row: 3; }
+.frame-tablet .industries-grid .span-2 { grid-column: 1 / -1; grid-row: auto; }
+.frame-mobile .industries-grid .span-2 { grid-column: 1; grid-row: auto; }
+
+/* =============================================================
+   PROOF — sidebar + 4-stat grid
+   ============================================================= */
+.frame .proof-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 64px;
+  align-items: start;
+}
+.frame-tablet .proof-grid { grid-template-columns: 1fr; gap: 48px; }
+.frame-mobile  .proof-grid { grid-template-columns: 1fr; gap: 32px; }
+.frame .proof-grid .h2 { line-height: 1.05; }
+.frame .proof-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--slate-200);
+  border-left: 1px solid var(--slate-200);
+}
+.frame-mobile .proof-stats { grid-template-columns: 1fr; }
+.frame .proof-stat {
+  padding: 24px;
+  border-right: 1px solid var(--slate-200);
+  border-bottom: 1px solid var(--slate-200);
+}
+.frame .proof-stat .label {
+  font: 500 12px/1.4 var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--slate-500);
+  margin: 0 0 12px;
+}
+.frame .proof-stat .value {
+  font: 400 16px/1.55 var(--font-body);
+  font-style: italic;
+  color: var(--slate-500);
+}
+
+/* =============================================================
+   METHODOLOGY — horizontal 5-step rail
+   ============================================================= */
+.frame .method-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+.frame-tablet .method-head,
+.frame-mobile  .method-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 32px; }
+.frame .method-head .lead { max-width: 480px; justify-self: end; margin: 0; color: var(--slate-600); }
+.frame-tablet .method-head .lead,
+.frame-mobile .method-head .lead { justify-self: start; max-width: 100%; }
+.frame .method-rail {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--slate-200);
+}
+.frame-tablet .method-rail {
+  grid-template-columns: repeat(3, 1fr);
+}
+.frame-mobile .method-rail { grid-template-columns: 1fr; }
+.frame .method-rail .step {
+  padding: 32px 24px;
+  border-right: 1px solid var(--slate-200);
+}
+.frame .method-rail .step:last-child { border-right: 0; }
+.frame-tablet .method-rail .step:nth-child(3n) { border-right: 0; }
+.frame-tablet .method-rail .step:nth-child(n+4) { border-top: 1px solid var(--slate-200); }
+.frame-tablet .method-rail .step:nth-child(5) { border-right: 1px solid var(--slate-200); }
+.frame-mobile  .method-rail .step { border-right: 0; border-bottom: 1px solid var(--slate-200); padding: 24px; }
+.frame-mobile  .method-rail .step:last-child { border-bottom: 0; }
+.frame .method-rail .step .num {
+  font: 500 12px/1 var(--font-mono);
+  color: var(--orange-500);
+  letter-spacing: 0.04em;
+  margin: 0 0 16px;
+  display: block;
+}
+.frame .method-rail .step .name {
+  font: 600 18px/1.25 var(--font-display);
+  color: var(--navy-900);
+  margin: 0 0 12px;
+}
+.frame .method-rail .step .desc {
+  font: 400 14px/1.55 var(--font-body);
+  color: var(--slate-600);
+  margin: 0;
+}
+
+/* =============================================================
+   RESOURCES — single subscribe block
+   ============================================================= */
+.frame .resources-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  border: 1px solid var(--slate-200);
+  border-radius: 12px;
+  padding: 48px;
+}
+.frame-tablet .resources-grid { grid-template-columns: 1fr; gap: 32px; padding: 32px; }
+.frame-mobile  .resources-grid { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
+
+.frame .subscribe-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border: 1px solid var(--slate-200);
+  border-radius: 8px;
+  padding: 6px;
+  background: #fff;
+  transition: box-shadow 120ms;
+}
+.frame .subscribe-row.focus {
+  box-shadow: 0 0 0 2px var(--orange-500);
+  border-color: var(--orange-500);
+}
+.frame .subscribe-row input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font: 400 14px/1 var(--font-body);
+  color: var(--navy-950);
+  padding: 8px 12px;
+}
+.frame .subscribe-row input::placeholder {
+  color: var(--slate-500);
+  font-style: italic;
+}
+.frame-mobile .subscribe-row {
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+}
+.frame-mobile .subscribe-row input { padding: 8px 4px; }
+.frame-mobile .subscribe-row .btn { width: 100%; justify-content: center; }
+
+/* =============================================================
+   CTA STRIP — symmetric
+   ============================================================= */
+.frame .cta-strip {
+  background: var(--navy-950);
+  color: #fff;
+  text-align: center;
+  padding: 96px 64px;
+}
+.frame-tablet .cta-strip { padding: 64px 32px; }
+.frame-mobile  .cta-strip { padding: 48px 24px; }
+.frame .cta-strip h2 {
+  color: #fff;
+  font: 700 48px/1.05 var(--font-display);
+  letter-spacing: -0.025em;
+  margin: 16px auto 0;
+  max-width: 720px;
+}
+.frame-tablet .cta-strip h2 { font-size: 40px; }
+.frame-mobile  .cta-strip h2 { font-size: 28px; line-height: 1.15; }
+.frame .cta-strip .eyebrow { color: rgba(255,255,255,0.56); }
+.frame .cta-strip .ctas { margin-top: 32px; display: inline-flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.frame-mobile .cta-strip .ctas .btn { width: 100%; }
+
+/* =============================================================
+   FOOTER
+   ============================================================= */
+.frame .footer {
+  background: var(--navy-950);
+  color: rgba(255,255,255,0.8);
+  padding: 64px;
+}
+.frame-tablet .footer { padding: 48px 32px; }
+.frame-mobile  .footer { padding: 32px 24px; }
+.frame .footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+.frame-tablet .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+.frame-mobile  .footer-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
+.frame .footer .logo { height: 32px; margin-bottom: 24px; display: block; }
+.frame .footer h5 {
+  font: 600 14px/1 var(--font-body);
+  color: #fff;
+  margin: 0 0 16px;
+  letter-spacing: 0.02em;
+}
+.frame .footer ul { list-style: none; padding: 0; margin: 0; }
+.frame .footer li {
+  font: 400 14px/2 var(--font-body);
+  color: rgba(255,255,255,0.64);
+}
+.frame .footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 32px;
+  font: 400 12px/1.4 var(--font-body);
+  color: rgba(255,255,255,0.48);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Section dividers */
+.frame section + section { border-top: 1px solid var(--slate-200); }
+.frame .leorix + section,
+.frame section + .leorix,
+.frame .cta-strip + section,
+.frame section + .cta-strip,
+.frame .footer { border-top: 0; }
+
+/* Side annotations on desktop frame */
+.with-anno {
+  position: relative;
+}
+.side-anno {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--slate-500);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.section-anno {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--slate-400);
+  background: rgba(255,255,255,0.85);
+  padding: 4px 8px;
+  border-radius: 2px;
+  position: absolute;
+  top: 8px; left: 12px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Hanging punctuation feel for bullet lists */
+.frame .checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.frame .checklist li {
+  position: relative;
+  padding-left: 20px;
+  font: 400 14px/1.85 var(--font-body);
+  color: var(--slate-600);
+  text-indent: 0;
+}
+.frame .checklist li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--slate-400);
+  font-family: var(--font-mono);
+}
+
+/* Buttons row demo for state annotations */
+.state-row {
+  display: grid;
+  grid-template-columns: repeat(5, max-content);
+  gap: 16px;
+  align-items: center;
+  padding: 16px 64px 0;
+  margin: 0 auto;
+  max-width: 1312px;
+}
+.state-row > .col {
+  display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
+}
+
+
+
+/* =============================================================
+   Final-Desktop overrides — render the .frame as a real page,
+   not as a design canvas. The Handover.html keeps the canvas
+   frame styling; this file removes it.
+   ============================================================= */
+body { background: #fff; padding: 0; margin: 0; }
+.frame.frame-desktop {
+  width: auto;
+  max-width: none;
+  margin: 0;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ========================================================
+       PANEL · DESKTOP 1440
+       ======================================================== -->
+  <div class="frame frame-desktop">
+      <a href="#main" class="skip-link">Skip to content</a>
+
+      <!-- 01 NAV — default -->
+      <nav class="nav" aria-label="Primary">
+        <img class="logo" src="assets/connexr-logo.png" alt="Connexr" />
+        <ul>
+          <li>Services</li>
+          <li>Products</li>
+          <li>Industries</li>
+          <li>Insights</li>
+          <li>Company</li>
+        </ul>
+        <div class="right">
+          <span class="signin">Sign in</span>
+          <button class="btn btn-primary">Book a demo</button>
+        </div>
+      </nav>
+      <main id="main" tabindex="-1">
+
+      <!-- 02 HERO -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div>
+              <span class="eyebrow">AIOps · Managed Services</span>
+              <h1 class="h1">AI at the Core. Scale at Speed.</h1>
+              <p class="subline">We run AI-native operations for enterprise IT — eliminating alert fatigue, automating incident response, and giving your team back the hours.</p>
+              <div class="ctas">
+                <button class="btn btn-primary">Book a demo</button>
+                <button class="btn btn-secondary">Explore the platform →</button>
+              </div>
+              <div class="certs">
+                <span class="cert-chip dot">SOC 2 Type II</span>
+                <span class="cert-chip dot">HIPAA</span>
+                <span class="cert-chip dot">ISO 27001</span>
+                <span class="cert-chip dot">GDPR</span>
+              </div>
+            </div>
+            <div>
+              <div class="schematic" aria-hidden="true">
+                <span class="meta">fig. 01 — signal flow</span>
+                <span class="scale">triage · dedup · route</span>
+                <svg viewBox="0 0 480 360" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+                  <defs>
+                    <style>
+                      .schem-node { fill: #122560; }
+                      .schem-line { stroke: #F27A1A; stroke-width: 1; fill: none; opacity: 0.55; }
+                      .schem-frame { stroke: #E2E8F0; stroke-width: 1; fill: none; }
+                    </style>
+                  </defs>
+                  <rect x="32" y="40" width="80" height="280" class="schem-frame" />
+                  <rect x="200" y="100" width="80" height="160" class="schem-frame" />
+                  <rect x="368" y="140" width="64" height="80" class="schem-frame" />
+
+                  <circle cx="72" cy="60"  r="4" class="schem-node" />
+                  <circle cx="72" cy="112" r="4" class="schem-node" />
+                  <circle cx="72" cy="160" r="4" class="schem-node" />
+                  <circle cx="72" cy="208" r="4" class="schem-node" />
+                  <circle cx="72" cy="252" r="4" class="schem-node" />
+                  <circle cx="72" cy="304" r="4" class="schem-node" />
+
+                  <circle cx="240" cy="118" r="4" class="schem-node" />
+                  <circle cx="240" cy="148" r="4" class="schem-node" />
+                  <circle cx="240" cy="178" r="4" class="schem-node" />
+                  <circle cx="240" cy="208" r="4" class="schem-node" />
+                  <circle cx="240" cy="238" r="4" class="schem-node" />
+                  <circle cx="240" cy="268" r="4" class="schem-node" />
+
+                  <circle cx="400" cy="158" r="4" class="schem-node" />
+                  <circle cx="400" cy="170" r="4" class="schem-node" />
+                  <circle cx="400" cy="182" r="4" class="schem-node" />
+                  <circle cx="400" cy="194" r="4" class="schem-node" />
+                  <circle cx="400" cy="206" r="4" class="schem-node" />
+                  <circle cx="400" cy="218" r="4" class="schem-node" />
+
+                  <g>
+                    <line x1="72" y1="60"  x2="240" y2="118" class="schem-line" />
+                    <line x1="72" y1="60"  x2="240" y2="178" class="schem-line" />
+                    <line x1="72" y1="112" x2="240" y2="118" class="schem-line" />
+                    <line x1="72" y1="112" x2="240" y2="148" class="schem-line" />
+                    <line x1="72" y1="112" x2="240" y2="208" class="schem-line" />
+                    <line x1="72" y1="160" x2="240" y2="148" class="schem-line" />
+                    <line x1="72" y1="160" x2="240" y2="178" class="schem-line" />
+                    <line x1="72" y1="160" x2="240" y2="208" class="schem-line" />
+                    <line x1="72" y1="208" x2="240" y2="178" class="schem-line" />
+                    <line x1="72" y1="208" x2="240" y2="208" class="schem-line" />
+                    <line x1="72" y1="208" x2="240" y2="238" class="schem-line" />
+                    <line x1="72" y1="252" x2="240" y2="208" class="schem-line" />
+                    <line x1="72" y1="252" x2="240" y2="238" class="schem-line" />
+                    <line x1="72" y1="252" x2="240" y2="268" class="schem-line" />
+                    <line x1="72" y1="304" x2="240" y2="238" class="schem-line" />
+                    <line x1="72" y1="304" x2="240" y2="268" class="schem-line" />
+                  </g>
+                  <g>
+                    <line x1="240" y1="118" x2="400" y2="158" class="schem-line" />
+                    <line x1="240" y1="118" x2="400" y2="170" class="schem-line" />
+                    <line x1="240" y1="148" x2="400" y2="170" class="schem-line" />
+                    <line x1="240" y1="148" x2="400" y2="182" class="schem-line" />
+                    <line x1="240" y1="178" x2="400" y2="182" class="schem-line" />
+                    <line x1="240" y1="178" x2="400" y2="194" class="schem-line" />
+                    <line x1="240" y1="208" x2="400" y2="194" class="schem-line" />
+                    <line x1="240" y1="208" x2="400" y2="206" class="schem-line" />
+                    <line x1="240" y1="238" x2="400" y2="206" class="schem-line" />
+                    <line x1="240" y1="238" x2="400" y2="218" class="schem-line" />
+                    <line x1="240" y1="268" x2="400" y2="218" class="schem-line" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 03 TRUST -->
+      <section class="trust">
+        <div class="container">
+          <div class="trust-grid">
+            <span class="label">Trusted by enterprise<br/>IT teams →</span>
+            <div class="trust-row">
+              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 SERVICES -->
+      <section>
+        <div class="container">
+          <div class="services-grid">
+            <div class="head">
+              <span class="eyebrow">Services</span>
+              <h2 class="h2" style="margin-top: 16px;">Six practices.<br/>One operating model.</h2>
+              <p class="lead muted" style="margin: 24px 0 0;">Every engagement runs the same instrumented playbook — discover, architect, build, deploy, optimize. Practice areas determine team and stack.</p>
+              <div style="margin-top: 32px;">
+                <button class="btn btn-secondary">Browse all services →</button>
+              </div>
+            </div>
+            <div class="cards">
+              <div class="card">
+                <div class="h4">Managed AIOps</div>
+                <p>Alert correlation, incident response, runbook automation — operated 24×7.</p>
+              </div>
+              <div class="card hover" style="position: relative;">
+                <div class="h4">AI Transformation</div>
+                <p>Production AI systems — model lifecycle, evals, governance, platform plumbing.</p>
+                
+              </div>
+              <div class="card">
+                <div class="h4">Cloud &amp; Infrastructure</div>
+                <p>Multi-cloud landing zones, FinOps, platform engineering, migration with rollback plans.</p>
+              </div>
+              <div class="card">
+                <div class="h4">Enterprise Security</div>
+                <p>Compliance posture, identity, detection engineering, continuous controls monitoring.</p>
+              </div>
+              <div class="card">
+                <div class="h4">Data &amp; Analytics</div>
+                <p>Data platforms, lineage, semantic layer, analytics surfaces business owners use.</p>
+              </div>
+              <div class="card">
+                <div class="h4">Digital Strategy</div>
+                <p>Operating-model design, target architecture, sequenced roadmap your CFO will sign.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 PARTNERS -->
+      <section class="partners full-bleed">
+        <div class="container">
+          <div class="partners-grid">
+            <span class="label">Platform partners →</span>
+            <span class="cell">AWS</span>
+            <span class="cell">Azure</span>
+            <span class="cell">GCP</span>
+            <span class="cell">ServiceNow</span>
+            <span class="cell">Datadog</span>
+            <span class="cell">Microsoft 365</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 SERVICE TABS -->
+      <section>
+        <div class="container">
+          <div style="margin-bottom: 64px;">
+            <span class="eyebrow">Deep-dive</span>
+            <h2 class="h2" style="margin-top: 16px;">Pick a practice. See how we run it.</h2>
+          </div>
+          <div class="tabs-grid">
+            <div class="tabs-side">
+              <span class="tab active">Managed AIOps</span>
+              <span class="tab">AI Transformation</span>
+              <span class="tab">Cloud &amp; Infrastructure</span>
+            </div>
+            <div class="tab-panel">
+              <div>
+                <h3 class="panel-h3">A 24×7 ops capability you don’t have to staff.</h3>
+                <p class="muted" style="margin: 0 0 24px; max-width: 560px;">Connexr engineers operate alert correlation, incident response, and runbook automation against your existing observability stack — no rip-and-replace, no parallel control plane.</p>
+                <p class="muted" style="margin: 0; max-width: 560px;">Engagement reviews cover MTTR, change-failure rate, alert volume, and unit cost.</p>
+                <div style="margin-top: 32px;">
+                  <a href="#" style="font: 500 14px/1 var(--font-body); color: var(--navy-900); border-bottom: 1px solid var(--orange-500); padding-bottom: 4px; text-decoration: none;">See the playbook →</a>
+                </div>
+              </div>
+              <div>
+                <p class="eyebrow" style="margin: 0 0 16px;">What’s included</p>
+                <ul class="checklist">
+                  <li>Alert correlation &amp; deduplication</li>
+                  <li>P1–P3 incident triage and response</li>
+                  <li>Runbook authoring and automation</li>
+                  <li>Embedded on-call rotation</li>
+                  <li>Evidence trail for audit and post-mortem</li>
+                  <li>Quarterly engagement review</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          </div>
+      </section>
+
+      <!-- 07 LEORIX -->
+      <section class="leorix full-bleed">
+        <div class="leorix-grid">
+          <div>
+            <span class="eyebrow">Flagship product</span>
+            <h2>LeoRix AI</h2>
+            <span class="accent-bar"></span>
+          </div>
+          <div>
+            <p>Operator-grade reasoning for AIOps incident response. Available standalone or as part of a Managed AIOps engagement. Compliance posture inherits from your tenant. Specifications available on request.</p>
+            <div style="margin-top: 32px;">
+              <a class="read" href="#">Read the spec →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 INDUSTRIES -->
+      <section>
+        <div class="container">
+          <div class="industries-head">
+            <div>
+              <span class="eyebrow">Industries</span>
+              <h2 class="h2" style="margin-top: 16px;">Where we operate.</h2>
+            </div>
+            <p class="lead muted">Industry depth determines the reference architecture, the compliance posture, and the on-call playbook we hand your team.</p>
+          </div>
+          <div class="industries-grid">
+            <div class="card feature">
+              <div>
+                <span class="tag">Industry</span>
+                <div class="h4">Healthcare</div>
+                <p>HIPAA-eligible deployments.</p>
+              </div>
+            </div>
+            <div class="card">
+              <span class="tag">Industry</span>
+              <div class="h4">FinTech</div>
+              <p>Latency- and audit-bound systems.</p>
+            </div>
+            <div class="card">
+              <span class="tag">Industry</span>
+              <div class="h4">Manufacturing</div>
+              <p>OT/IT convergence.</p>
+            </div>
+            <div class="card">
+              <span class="tag">Industry</span>
+              <div class="h4">Insurance</div>
+              <p>Claims, underwriting, fraud.</p>
+            </div>
+            <div class="card">
+              <span class="tag">Industry</span>
+              <div class="h4">Retail</div>
+              <p>Peak readiness, omni-stack.</p>
+            </div>
+            <div class="card span-2">
+              <span class="tag">Industry</span>
+              <div class="h4">AIOps &amp; IT Ops</div>
+              <p>Greenfield + brownfield.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09 PROOF -->
+      <section style="background: var(--bg-50);">
+        <div class="container">
+          <div class="proof-grid">
+            <div>
+              <span class="eyebrow">Proof</span>
+              <h2 class="h2" style="margin-top: 16px;">Operator-grade,<br/>audit-grade.</h2>
+              <p class="lead muted" style="margin-top: 24px; max-width: 360px;">Numbers under NDA — request the case study and we’ll walk through engagements that match your stack and posture.</p>
+              <div style="margin-top: 32px;">
+                <a href="#" style="font: 500 14px/1 var(--font-body); color: var(--navy-900); border-bottom: 1px solid var(--orange-500); padding-bottom: 4px; text-decoration: none;">Request access →</a>
+              </div>
+              <div class="cert-row" style="margin-top: 48px;">
+                <span class="cert-chip">SOC 2 Type II</span>
+                <span class="cert-chip">HIPAA</span>
+                <span class="cert-chip">ISO 27001</span>
+                <span class="cert-chip">GDPR</span>
+              </div>
+            </div>
+            <div class="proof-stats">
+              <div class="proof-stat">
+                <p class="label">Uptime SLA</p>
+                <div class="value">Pending</div>
+              </div>
+              <div class="proof-stat">
+                <p class="label">Engagements</p>
+                <div class="value">Pending</div>
+              </div>
+              <div class="proof-stat">
+                <p class="label">MTTR reduction</p>
+                <div class="value">Pending</div>
+              </div>
+              <div class="proof-stat">
+                <p class="label">Engineer-hours saved</p>
+                <div class="value">Pending</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 METHODOLOGY -->
+      <section>
+        <div class="container">
+          <div class="method-head">
+            <div>
+              <span class="eyebrow">Methodology</span>
+              <h2 class="h2" style="margin-top: 16px;">How an engagement runs.</h2>
+            </div>
+            <p class="lead muted">Five phases. The same operating cadence whether the project is greenfield AIOps or a brownfield migration.</p>
+          </div>
+          <div class="method-rail">
+            <div class="step">
+              <span class="num">PHASE 01</span>
+              <div class="name">Discover</div>
+              <p class="desc">Two-week instrumented audit — observability, on-call data, change history.</p>
+            </div>
+            <div class="step">
+              <span class="num">PHASE 02</span>
+              <div class="name">Architect</div>
+              <p class="desc">Reference architecture matched to your compliance posture.</p>
+            </div>
+            <div class="step">
+              <span class="num">PHASE 03</span>
+              <div class="name">Build</div>
+              <p class="desc">Engineering — ours, yours, or a joint pod. Code review with the team.</p>
+            </div>
+            <div class="step">
+              <span class="num">PHASE 04</span>
+              <div class="name">Deploy</div>
+              <p class="desc">Cutover with a rollback plan. Embedded on-call through stabilization.</p>
+            </div>
+            <div class="step">
+              <span class="num">PHASE 05</span>
+              <div class="name">Optimize</div>
+              <p class="desc">Quarterly review — cost, MTTR, change-failure rate.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 RESOURCES -->
+      <section>
+        <div class="container">
+          <div class="resources-grid">
+            <div>
+              <span class="eyebrow">Insights</span>
+              <h2 class="h3" style="margin-top: 16px;">Insights coming soon.</h2>
+              <p class="lead muted" style="margin-top: 16px; max-width: 440px;">Field notes from production AIOps — incident post-mortems, reference architectures, evals.</p>
+            </div>
+            <div>
+              <p class="eyebrow" style="margin: 0 0 16px;">Subscribe →</p>
+              <div class="subscribe-row focus" style="position: relative;">
+                <input type="email" name="email" aria-label="Email address" placeholder="Email address" />
+                <button class="btn btn-primary">Subscribe</button>
+                
+              </div>
+              <p class="placeholder-mono" style="margin-top: 16px;">First issue — date pending.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12 CTA STRIP -->
+      <section class="cta-strip full-bleed">
+        <span class="eyebrow">Get started</span>
+        <h2>Talk to an operator, not a sales engineer.</h2>
+        <div class="ctas">
+          <button class="btn btn-primary">Book a demo</button>
+          <button class="btn btn-ghost-dark">Explore the platform →</button>
+        </div>
+      </section>
+
+      <!-- 13 FOOTER -->
+      <footer class="footer full-bleed">
+        <div class="footer-grid">
+          <div>
+            <img class="logo" src="assets/connexr-logo-white.png" alt="Connexr" />
+            <p style="font: 400 14px/1.55 var(--font-body); color: rgba(255,255,255,0.64); margin: 0; max-width: 320px;">AI-native operations for enterprise IT. A division of RSA Tech Group.</p>
+          </div>
+          <div>
+            <h5>Services</h5>
+            <ul>
+              <li>Managed AIOps</li>
+              <li>AI Transformation</li>
+              <li>Cloud &amp; Infrastructure</li>
+              <li>Security</li>
+              <li>Data &amp; Analytics</li>
+            </ul>
+          </div>
+          <div>
+            <h5>Products</h5>
+            <ul>
+              <li>LeoRix AI</li>
+              <li>Reference architectures</li>
+              <li>Runbook library</li>
+            </ul>
+          </div>
+          <div>
+            <h5>Company</h5>
+            <ul>
+              <li>About</li>
+              <li>Careers</li>
+              <li>Press</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+          <div>
+            <h5>Compliance</h5>
+            <ul>
+              <li>SOC 2 Type II</li>
+              <li>HIPAA</li>
+              <li>ISO 27001</li>
+              <li>GDPR</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 Connexr · A division of RSA Tech Group</span>
+          <span>Privacy · Terms · Security</span>
+        </div>
+      </footer>
+
+      </main>
+
+    </div>
+    <span class="canvas-anno">Desktop · 1440 — primary panel · interaction states annotated inline</span>
+
+</body>
+</html>

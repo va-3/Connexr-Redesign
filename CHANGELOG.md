@@ -30,6 +30,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Fixed (post-production-export)
 - 10 straight apostrophes in `Production.html` copy converted to curly typographic U+2019 (`don't`, `What's`, `we'll` contractions). 0 straight contractions remain. Brief specifies curly throughout.
 
+### Changed
+- Split the landing-page artifact into two files for distinct audiences. The original `frontend/Production.html` is renamed to `frontend/Handover.html` (the engineering handoff spec — multi-state, multi-breakpoint, annotated). A new `frontend/Final-Desktop.html` is the clean stakeholder preview (single desktop view, no annotations, no state demos, no canvas chrome). README in `frontend/` updated to explain when to use each.
+
 ---
 
 ## Format
