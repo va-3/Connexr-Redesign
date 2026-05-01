@@ -7,7 +7,7 @@ Two artifacts of the Connexr landing page (Variant B / Editorial direction), eac
 ```
 frontend/
 ├── README.md                      ← you are here
-├── Final-Desktop.html             ← BOSS / STAKEHOLDER preview. Open this first.
+├── index.html             ← BOSS / STAKEHOLDER preview. Open this first.
 ├── Handover.html                  ← ENGINEERING handoff spec. Use for porting.
 ├── tokens.css                     ← design tokens (used by reference wireframes)
 ├── assets/
@@ -21,7 +21,9 @@ frontend/
 
 ## Which file should I open?
 
-### `Final-Desktop.html` — for stakeholder review
+### `index.html` — for stakeholder review (also the public site)
+
+This file is the deployed page on GitHub Pages — `https://va-3.github.io/Connexr-Redesign/` resolves to this file directly.
 
 Single clean desktop view, 1440px wide, no annotations, no canvas chrome, no state demos. **This is what a real visitor sees.** Use this when sharing with the boss, with leadership, or with any non-engineer audience.
 
@@ -58,7 +60,7 @@ What it contains:
 The server is running on port `8888` for this session. Open in a browser:
 
 ```
-http://localhost:8888/Final-Desktop.html      ← stakeholder preview
+http://localhost:8888/index.html      ← stakeholder preview
 http://localhost:8888/Handover.html           ← engineering spec
 http://localhost:8888/reference/Wireframes.html
 http://localhost:8888/reference/Variant-B-Editorial.html
@@ -104,7 +106,7 @@ All quantified claims, real client logos, real case studies, and real product sc
 
 ## What's `tokens.css` for
 
-The reference wireframes (`reference/Wireframes.html` and `reference/Variant-B-Editorial.html`) use this file as an external stylesheet. Both `Final-Desktop.html` and `Handover.html` have the same tokens **inlined** — they're self-contained files with no external CSS dependency (Google Fonts @import for typography is the one allowed external load).
+The reference wireframes (`reference/Wireframes.html` and `reference/Variant-B-Editorial.html`) use this file as an external stylesheet. Both `index.html` and `Handover.html` have the same tokens **inlined** — they're self-contained files with no external CSS dependency (Google Fonts @import for typography is the one allowed external load).
 
 The canonical token reference for the broader design system lives at `../design-system/colors_and_type.css`. `tokens.css` here is a synced copy used only by the reference wireframes.
 
@@ -120,7 +122,7 @@ The page is at ~95% production-grade visually. The remaining gap is leadership i
 
 ## Next step
 
-Send the boss the `Final-Desktop.html` link (deploy briefly to Vercel/Netlify if a portable URL is needed). Capture their feedback as a triage list. Then either:
+Send the boss the `index.html` link (deploy briefly to Vercel/Netlify if a portable URL is needed). Capture their feedback as a triage list. Then either:
 
 - Iterate one more focused round in Claude Design (if feedback is structural)
 - Move to issue [#1 — Next.js scaffold](https://github.com/va-3/Connexr-Redesign/issues/1) and start the production port (if feedback is content-only)
