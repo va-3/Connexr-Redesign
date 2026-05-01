@@ -1021,6 +1021,62 @@ body { background: #fff; padding: 0; margin: 0; }
    per stakeholder review preference. */
 .btn.focus { box-shadow: 0 0 0 2px var(--orange-500); outline: none; }
 
+/* =============================================================
+   Marquee — Trust strip + Platform partners
+   Continuous horizontal scroll, paused on hover, frozen when
+   prefers-reduced-motion is set. Track contains 2 copies of the
+   content for a seamless loop (translateX 0 → -50%).
+   ============================================================= */
+.marquee {
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: marquee-scroll 30s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* Trust-row marquee — overrides the 6-col grid behavior */
+.frame .trust-row.marquee {
+  display: block;
+  grid-template-columns: none;
+  width: 100%;
+}
+.frame .trust-row.marquee .marquee-track {
+  gap: 24px;
+  animation-duration: 35s;
+}
+.frame .trust-row.marquee .logo-placeholder { flex: 0 0 auto; min-width: 144px; }
+
+/* Partners-grid — give the marquee container the right column */
+.frame .partners-grid.partners-marquee-grid {
+  grid-template-columns: 200px 1fr;
+}
+.frame .partners-marquee { width: 100%; }
+.frame .partners-marquee .marquee-track {
+  gap: 0;
+  animation-duration: 28s;
+}
+.frame .partners-marquee .cell {
+  white-space: nowrap;
+  border-left: 1px solid var(--slate-200);
+  padding: 16px 24px;
+  flex: 0 0 auto;
+}
+
 </style>
 </head>
 <body>
@@ -1146,13 +1202,21 @@ body { background: #fff; padding: 0; margin: 0; }
         <div class="container">
           <div class="trust-grid">
             <span class="label">Trusted by enterprise<br/>IT teams →</span>
-            <div class="trust-row">
-              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
-              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
-              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
-              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
-              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
-              <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+            <div class="trust-row marquee" aria-label="Client logo placeholders, scrolling">
+              <div class="marquee-track">
+                <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+                <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+                <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+                <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+                <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+                <div class="logo-placeholder"><span class="placeholder-mono">Client logo</span></div>
+                <div class="logo-placeholder" aria-hidden="true"><span class="placeholder-mono">Client logo</span></div>
+                <div class="logo-placeholder" aria-hidden="true"><span class="placeholder-mono">Client logo</span></div>
+                <div class="logo-placeholder" aria-hidden="true"><span class="placeholder-mono">Client logo</span></div>
+                <div class="logo-placeholder" aria-hidden="true"><span class="placeholder-mono">Client logo</span></div>
+                <div class="logo-placeholder" aria-hidden="true"><span class="placeholder-mono">Client logo</span></div>
+                <div class="logo-placeholder" aria-hidden="true"><span class="placeholder-mono">Client logo</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -1204,14 +1268,24 @@ body { background: #fff; padding: 0; margin: 0; }
       <!-- 05 PARTNERS -->
       <section class="partners full-bleed">
         <div class="container">
-          <div class="partners-grid">
+          <div class="partners-grid partners-marquee-grid">
             <span class="label">Platform partners →</span>
-            <span class="cell">AWS</span>
-            <span class="cell">Azure</span>
-            <span class="cell">GCP</span>
-            <span class="cell">ServiceNow</span>
-            <span class="cell">Datadog</span>
-            <span class="cell">Microsoft 365</span>
+            <div class="marquee partners-marquee" aria-label="Platform partners, scrolling">
+              <div class="marquee-track">
+                <span class="cell">AWS</span>
+                <span class="cell">Azure</span>
+                <span class="cell">GCP</span>
+                <span class="cell">ServiceNow</span>
+                <span class="cell">Datadog</span>
+                <span class="cell">Microsoft 365</span>
+                <span class="cell" aria-hidden="true">AWS</span>
+                <span class="cell" aria-hidden="true">Azure</span>
+                <span class="cell" aria-hidden="true">GCP</span>
+                <span class="cell" aria-hidden="true">ServiceNow</span>
+                <span class="cell" aria-hidden="true">Datadog</span>
+                <span class="cell" aria-hidden="true">Microsoft 365</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
