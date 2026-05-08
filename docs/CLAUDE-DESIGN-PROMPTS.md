@@ -331,6 +331,43 @@ Surface the updated Production.html with the new type-led hero across all three 
 
 ---
 
+## PROMPT 5 — Editorial Operator (aggressive, 10 sections)
+
+> Parallel aesthetic direction running alongside Variant B. Generates a NEW file (`Editorial.html`) — does not overwrite anything. Solves the "too uniformly white" first-impression problem with surface alternation (4 dark sections, 3 cream, 1 slate-50, 1 white), editorial typographic moments (mono `§` section markers, drop caps in 3 places, IBM Plex Serif H2 in Methodology), bigger display type (H1 112px, H2 64px), and a split-screen hero (cream left + dark navy right with attested-credentials grid as the visual anchor). Trims to 10 sections — Service Tabs and Resources move to subpages.
+
+```
+The Connexr design system is attached. /docs/DESIGN-BRIEF.md is the canonical brief. The locked tokens (navy #122560, orange #F27A1A, DM Sans + IBM Plex Sans/Mono/Serif, 8pt grid) are non-negotiable.
+
+Build a NEW artifact in this project. DO NOT modify Production.html or any existing file. Save the new file as `Editorial.html`. This is a parallel aesthetic direction — solves the "too uniformly white" first-impression problem with deliberate surface alternation, editorial typographic moments, and material variety. B2B-credible, zero-fabrication compliant.
+
+LAYOUT & VIEWPORT
+
+Single canonical desktop view. Viewport-fluid, content max-width 1280px centered. No three-breakpoint stack, no canvas chrome, no annotation layers. Scales gracefully on common MacBook viewports (1440 / 1512 / 1728).
+
+10-section structure (Service Tabs and Resources have moved to subpages — DO NOT include them):
+  1. Nav (sticky, 64px)
+  2. Hero — split-screen, cream left / dark navy right
+  3. Trust strip — white surface, scrolling marquee
+  4. Services — slate-50 surface, 3×2 cards
+  5. Tech partners — DARK navy-950 surface, scrolling marquee
+  6. LeoRix AI — DARK navy-950
+  7. Industries — cream surface, featured + 5 supporting grid
+  8. Proof — DARK navy-950 surface, placeholder stats + certs + NDA link
+  9. Methodology — cream surface, editorial serif H2 + 5-step rail
+  10. CTA strip — DARK navy-950
+  11. Footer — DARK navy-950
+
+(Full prompt body matches the paste-ready version delivered in chat — surface alternation table, hero composition spec, editorial punctuation, type scale, marquee specs, section-by-section specs, zero-fabrication rules, quality bar. See git history for the full text.)
+
+OUTPUT
+
+Save as `Editorial.html` (NEW file alongside existing Production.html — do NOT overwrite anything else). Single canonical desktop preview. Surface for review before export.
+```
+
+The full prompt body is in commit history; reference the chat or `git show` of this file's introduction commit for the complete paste-ready text.
+
+---
+
 ## Mid-flight rescue prompts
 
 If a variant drifts into AI-generic territory, drop one of these as an inline comment on the offending section:
