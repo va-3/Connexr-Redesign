@@ -368,6 +368,26 @@ The full prompt body is in commit history; reference the chat or `git show` of t
 
 ---
 
+## PROMPT 6 — Enterprise Confidence (restrained, layout-led, htcinc.com-class)
+
+> Parallel direction informed by a reference analysis of htcinc.com. Solves prior feedback that the page reads "AI-generated" / "templated" / "color-alternation only." Differentiates sections by LAYOUT ARCHETYPE (full-bleed dark hero / narrow text column / multi-level service grid / image-led cards / split feature panel / inline stats strip / single quote / multi-column information hub) — not just background color. Drops bold display typography (max DM Sans 600, H1 56px not 112px), drops drop caps, drops section markers, drops Plex Serif moments. Introduces real 4:3 image-slot placeholders (not abstract shapes) and a unifying `→` arrow micro-interaction. Generates `Enterprise.html` as a NEW file.
+
+```
+The Connexr design system is attached. /docs/DESIGN-BRIEF.md is the canonical brief. Locked tokens: navy #122560, orange #F27A1A, DM Sans + IBM Plex Sans/Mono (no Plex Serif this time), 8pt grid.
+
+Build a NEW artifact in this project. Save the file as `Enterprise.html`. DO NOT modify Production.html or any existing file. Reference site (study, do not copy): htcinc.com — observe how each section uses a different layout archetype, not just alternating background colors.
+
+(Full prompt body matches the paste-ready version delivered in chat — 10-section structure with per-section layout archetypes, restrained typography spec capped at DM Sans 600, the unifying → arrow micro-interaction, real 4:3 image-slot placeholders, multi-level 4-category service architecture with sub-links, full zero-fabrication rules, single-self-contained HTML output. See git history for the full text.)
+
+OUTPUT
+
+Save as `Enterprise.html` (NEW file alongside existing Production.html — do NOT overwrite). Single canonical desktop preview. Surface for review before export.
+```
+
+The full prompt body is in commit history; reference the chat or `git show` of this file's introduction commit for the complete paste-ready text.
+
+---
+
 ## Mid-flight rescue prompts
 
 If a variant drifts into AI-generic territory, drop one of these as an inline comment on the offending section:
